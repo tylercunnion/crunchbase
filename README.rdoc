@@ -4,9 +4,9 @@ Library for pulling data from the CrunchBase API.
 
 == Usage
 
-	require 'crunchbase'
-	steve = Crunchbase::Person.get("steve-jobs")
-	facebook = Crunchbase::Company.get("facebook")
+   require 'crunchbase'
+   steve = Crunchbase::Person.get("steve-jobs")
+   facebook = Crunchbase::Company.get("facebook")
 
 
 == Copyright
