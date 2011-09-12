@@ -1,0 +1,83 @@
+{"first_name": "Steve",
+ "last_name": "Jobs",
+ "permalink": "steve-jobs",
+ "crunchbase_url": "http://www.crunchbase.com/person/steve-jobs",
+ "homepage_url": "",
+ "birthplace": "",
+ "twitter_username": "",
+ "blog_url": "",
+ "blog_feed_url": "",
+ "affiliation_name": "Apple",
+ "born_year": 1955,
+ "born_month": 2,
+ "born_day": 24,
+ "tag_list": "",
+ "alias_list": "",
+ "created_at": "Sat Dec 22 08:42:28 UTC 2007",
+ "updated_at": "Thu Aug 25 19:22:47 UTC 2011",
+ "overview": "\u003Cp\u003ESteve Jobs is the co-founder and CEO of \u003Ca href=\"http://www.crunchbase.com/person/steve-jobs\" title=\"Apple\"\u003EApple\u003C/a\u003E and formerly \u003Ca href=\"/company/pixar\" title=\"Pixar\" rel=\"nofollow\"\u003EPixar\u003C/a\u003E.\u003C/p\u003E\n\n\u003Cp\u003E\u0026#8220;Innovation distinguishes between a leader and a follower.\u0026#8221; -Steve Jobs\u003C/p\u003E\n\n\u003Cp\u003ESteve Jobs regularly makes most rosters of the rich and powerful. It is surprising for a guy who takes home an annual salary of U.S. $1. The reasons why he is on all power lists are; \u003Ca href=\"/company/apple\" title=\"Apple\" rel=\"nofollow\"\u003EApple\u003C/a\u003E, \u003Ca href=\"/company/next\" title=\"Next\" rel=\"nofollow\"\u003ENext\u003C/a\u003E, \u003Ca href=\"/product/ipod\" title=\"iPod\" rel=\"nofollow\"\u003EiPod\u003C/a\u003E and \u003Ca href=\"/company/pixar\" title=\"Pixar\" rel=\"nofollow\"\u003EPixar\u003C/a\u003E. Jobs is also known as the one man who could have upstaged \u003Ca href=\"/person/bill-gates\" title=\"Bill Gates\" rel=\"nofollow\"\u003EBill Gates\u003C/a\u003E. But Jobs was as excited about innovation as \u003Ca href=\"/person/bill-gates\" title=\"Bill Gates\" rel=\"nofollow\"\u003EBill Gates\u003C/a\u003E was interested in making money.\u003C/p\u003E\n\n\u003Cp\u003ESteve Jobs was born in Green Bay, Wisconsin to Joanne Simpson and a Syrian father Abdulfattah Jandali (who became a political science professor). Paul and Clara Jobs of \u003Ca href=\"/maps/city/Mountain%2520View\" title=\"Mountain View, Santa Clara County, California\" rel=\"nofollow\"\u003EMountain View, Santa Clara County, California\u003C/a\u003E then adopted him. The writer Mona Simpson is Jobs\u2019 biological sister. In 1972, Jobs graduated from Homestead High School in Cupertino, California and enrolled in Reed College in Portland, Oregon. One semester later he had dropped out. But instead of going back home he hung around college and took up the study of philosophy and foreign cultures.\u003C/p\u003E\n\n\u003Cp\u003ESteve Jobs had a deep-seated interest in technology so he took up a job at \u003Ca href=\"/company/atari-interactive\" title=\"Atari Inc.\" rel=\"nofollow\"\u003EAtari Inc.\u003C/a\u003E which was a leading manufacturer of video games. He struck a friendship with fellow designer \u003Ca href=\"/person/steve-wozniak\" title=\"Steve Wozniak\" rel=\"nofollow\"\u003ESteve Wozniak\u003C/a\u003E and attended meetings of the \u0026#8220;Homebrew Computer Club\u0026#8221; with him. \u003Ca href=\"/person/steve-wozniak\" title=\"Wozniak\" rel=\"nofollow\"\u003EWozniak\u003C/a\u003E and Jobs developed a system with a toy whistle available in the Cap\u0026#8217;n Crunch cereal box to make it possible to make free long distance telephone calls. They called off the amateur venture after someone told them of the possible legal consequences.\u003C/p\u003E\n\n\u003Cp\u003EAfter saving up some money Steve Jobs took off for India in the search of enlightenment with his friend Dan Kottke. Once he returned he convinced Wozniak to quit his job at \u003Ca href=\"/company/hewlett-packard\" title=\"Hewlett Packard\" rel=\"nofollow\"\u003EHewlett Packard\u003C/a\u003E and join him in his venture that concerned personal computers. They sold items like a scientific calculator to raise the seed capital. \u003C/p\u003E\n\n\u003Cp\u003EIn 1976, Jobs, then 21, and Wozniak, 26, founded \u003Ca href=\"/company/apple\" title=\"Apple Computer Co.\" rel=\"nofollow\"\u003EApple Computer Co.\u003C/a\u003E in the Jobs family garage. The first personal computer was sold for $666.66. By 1980, \u003Ca href=\"/company/apple\" title=\"Apple\" rel=\"nofollow\"\u003EApple\u003C/a\u003E had already released three improved versions of the personal computer. It had a wildly successful IPO, which made both founders millionaires many times over. Steve Jobs had managed to rope in John Scully of Pepsi to head the marketing function in \u003Ca href=\"/company/apple\" title=\"Apple\" rel=\"nofollow\"\u003EApple\u003C/a\u003E.\u003C/p\u003E\n\n\u003Cp\u003EA tiff with the \u003Ca href=\"/company/apple\" title=\"Apple\" rel=\"nofollow\"\u003EApple\u003C/a\u003E board and John Scully led to the resignation of Steve Jobs. As soon as he resigned he immersed himself in his brand new venture. Steve Jobs decided that he wanted to change the hardware industry. The company was called \u003Ca href=\"/company/next\" title=\"NeXTStep\" rel=\"nofollow\"\u003ENeXTStep\u003C/a\u003E and the new machine was called NeXT Computer. He ploughed in more than U.S. $250 million into the company. The machine was a commercial washout but it did help in object-oriented programming, PostScript, and magneto-optical devices. \u003Ca href=\"/person/tim-berners-lee\" title=\"Tim Berners-Lee\" rel=\"nofollow\"\u003ETim Berners-Lee\u003C/a\u003E developed the original World Wide Web system at CERN on a NeXT machine. Bitterly disappointed with \u003Ca href=\"/company/next\" title=\"NeXTStep\" rel=\"nofollow\"\u003ENeXTStep\u003C/a\u003E, Jobs accepted the offer that \u003Ca href=\"/company/apple\" title=\"Apple\" rel=\"nofollow\"\u003EApple\u003C/a\u003E made him.\u003C/p\u003E\n\n\u003Cp\u003ESteve Jobs also started \u003Ca href=\"/company/pixar\" title=\"Pixar Inc.\" rel=\"nofollow\"\u003EPixar Inc.\u003C/a\u003E, which has gone on to produce animated movies such as Toy Story (1995); A Bug\u0026#8217;s Life (1998); Toy Story 2 (1999); Monsters, Inc. (2001); Finding Nemo (2003); and The Incredibles (2004). This venture has made him one of the most sought after men in Hollywood.\u003C/p\u003E\n\n\u003Cp\u003EPost \u003Ca href=\"/company/pixar\" title=\"Pixar\" rel=\"nofollow\"\u003EPixar\u003C/a\u003E, Steve Jobs wanted another round of revolutionizing to do. This time it was the music industry. He introduced the \u003Ca href=\"/product/ipod\" title=\"iPod\" rel=\"nofollow\"\u003EiPod\u003C/a\u003E in 2003. Later he came up with \u003Ca href=\"/product/itunes\" title=\"iTunes\" rel=\"nofollow\"\u003EiTunes\u003C/a\u003E, which was a digital jukebox. A million and a half \u003Ca href=\"/product/ipod\" title=\"iPods\" rel=\"nofollow\"\u003EiPods\u003C/a\u003E later, the music industry still does not know whether this invention will save it or destroy it. \u003Ca href=\"/company/apple\" title=\"Apple\" rel=\"nofollow\"\u003EApple\u003C/a\u003E has a great advertising track record and its \u2018Rip, Mix, Burn\u2019 campaign was another feather in its cap. Now the industry uses a Mac to make the music and an \u003Ca href=\"/product/ipod\" title=\"iPod\" rel=\"nofollow\"\u003EiPod\u003C/a\u003E to store it.\u003C/p\u003E\n\n\u003Cp\u003ESteve Jobs lives with his wife, Laurene Powell and their three children in Silicon Valley. He also has a daughter, Lisa Jobs from a previous relationship. In 2004, there was a cancerous tumor in his pancreas, which was successfully operated upon. Jobs continued to struggle with his health, and in 2009 he underwent a successful liver transplant.\u003C/p\u003E\n\n\u003Cp\u003EJobs resigned as CEO of Apple in August 2011 and subsequently assumed the role of Chairman of the Board.\u003C/p\u003E",
+ "image":
+  {"available_sizes":
+    [[[150,
+       150],
+      "assets/images/resized/0001/0974/10974v3-max-150x150.jpg"],
+     [[250,
+       250],
+      "assets/images/resized/0001/0974/10974v3-max-250x250.jpg"],
+     [[400,
+       400],
+      "assets/images/resized/0001/0974/10974v3-max-450x450.jpg"]],
+   "attribution": ""},
+ "degrees":
+  [],
+ "relationships":
+  [{"is_past": true,
+    "title": "CEO",
+    "firm":
+     {"name": "Apple",
+      "permalink": "apple",
+      "type_of_entity": "company"}},
+   {"is_past": false,
+    "title": "Founder",
+    "firm":
+     {"name": "Pixar",
+      "permalink": "pixar",
+      "type_of_entity": "company"}},
+   {"is_past": false,
+    "title": "Founder",
+    "firm":
+     {"name": "NeXT",
+      "permalink": "next",
+      "type_of_entity": "company"}},
+   {"is_past": false,
+    "title": "Chairman, Co-Founder",
+    "firm":
+     {"name": "Apple",
+      "permalink": "apple",
+      "type_of_entity": "company"}}],
+ "investments":
+  [],
+ "milestones":
+  [{"description": "Named one of Time Magazine's top 25 most influential people on the web (2008)",
+    "stoned_year": 2009,
+    "stoned_month": 4,
+    "stoned_day": 30,
+    "source_url": "http://images.businessweek.com/ss/08/09/0929_most_influential/1.htm",
+    "source_text": "",
+    "source_description": "The 25 Most Influential People on the Web",
+    "stoneable_type": "Person",
+    "stoned_value": null,
+    "stoned_value_type": null,
+    "stoned_acquirer": null,
+    "stoneable":
+     {"first_name": "Steve",
+      "last_name": "Jobs",
+      "permalink": "steve-jobs"}}],
+ "video_embeds":
+  [{"embed_code": "\u003Cobject width=\"480\" height=\"385\"\u003E\u003Cparam name=\"movie\" value=\"http://www.youtube.com/v/D1R-jKKp3NA\u0026hl=en\u0026fs=1\"\u003E\u003C/param\u003E\u003Cparam name=\"allowFullScreen\" value=\"true\"\u003E\u003C/param\u003E\u003Cparam name=\"allowscriptaccess\" value=\"always\"\u003E\u003C/param\u003E\u003Cembed src=\"http://www.youtube.com/v/D1R-jKKp3NA\u0026hl=en\u0026fs=1\" type=\"application/x-shockwave-flash\" allowscriptaccess=\"always\" allowfullscreen=\"true\" width=\"480\" height=\"385\"\u003E\u003C/embed\u003E\u003C/object\u003E",
+    "description": "\u003Cp\u003ESteve Jobs delivering his commencement speech to the graduates of Stanford University in 2005\u003C/p\u003E"}],
+ "external_links":
+  [{"external_url": "http://thcx.org/tech-news/ipad-the-apple-tablet-all-you-need-to-know.html",
+    "title": "iPad"}],
+ "web_presences":
+  []}
