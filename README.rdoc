@@ -1,0 +1,18 @@
+= crunchbase
+
+Library for pulling data from the CrunchBase API.
+
+== Usage
+
+	require 'crunchbase'
+	steve = Crunchbase::Person.get("steve-jobs")
+	facebook = Crunchbase::Company.get("facebook")
+
+
+== Copyright
+
+Copyright (c) 2011 Tyler Cunnion. See LICENSE.txt for
+further details.
+
+I am not affiliated with AOL, Crunchbase, or anyone really.
+
