@@ -44,7 +44,7 @@ module Crunchbase
     end    
     
     it "should get an array of tags" do
-      person = Person.new({"tag_list" => "computers-technology", 
+      person = Person.new({"tag_list" => "computers, technology", 
         "created_at" => "Sat Dec 22 08:42:28 UTC 2007",
         "updated_at" => "Sat Dec 22 08:42:28 UTC 2007"})
       person.tags.should == ["computers", "technology"]

@@ -1,5 +1,3 @@
-require 'net/http'
-
 require 'date'
 module Crunchbase
   class Person
@@ -56,13 +54,13 @@ module Crunchbase
     
     # Returns an array of tags
     def tags
-      @tag_list.respond_to?('split') ? @tag_list.split('-') : []
+      @tag_list.respond_to?('split') ? @tag_list.split(', ') : []
     end
     
     # Returns array of aliases. I am only speculating because I have not seen
     # a CB profile which contains aliases.
     def aliases
-      @alias_list.respond_to?('split') ? @alias_list.split("-") : []
+      @alias_list.respond_to?('split') ? @alias_list.split(", ") : []
     end
     
   end
