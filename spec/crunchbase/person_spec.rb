@@ -12,8 +12,7 @@ module Crunchbase
     before(:each) do
       @steve.rewind
       @brad.rewind
-    end
-      
+    end 
     
     it "should ask for JSON object" do
       API.should_receive(:person).with("brad-fitzpatrick").and_return(JSON.parse(@brad.read))
@@ -60,6 +59,12 @@ module Crunchbase
     it "should get from web" do
       person = Person.get("steve-jobs")
       person.first_name.should == "Steve"
+    end
+    
+    it "should be equal to another with the same permalink and last updated" do
+      person = Person.get("steve-jobs")
+      person2 = Person.get("steve-jobs")
+      person.should === person2
     end
     
   end

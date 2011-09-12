@@ -1,6 +1,6 @@
 require 'date'
 module Crunchbase
-  class Person
+  class Person < CB_Object
             
     attr_reader :first_name, :last_name, :permalink, :crunchbase_url,
       :homepage_url, :birthplace, :twitter_username, :blog_url, :blog_feed_url,
@@ -50,17 +50,6 @@ module Crunchbase
         born = nil
       end
       born
-    end
-    
-    # Returns an array of tags
-    def tags
-      @tag_list.respond_to?('split') ? @tag_list.split(', ') : []
-    end
-    
-    # Returns array of aliases. I am only speculating because I have not seen
-    # a CB profile which contains aliases.
-    def aliases
-      @alias_list.respond_to?('split') ? @alias_list.split(", ") : []
     end
     
   end

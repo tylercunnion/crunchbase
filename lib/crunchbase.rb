@@ -1,4 +1,6 @@
 require 'crunchbase/api'
+require 'crunchbase/cb_object'
+require 'crunchbase/company'
 require 'crunchbase/person'
 require 'crunchbase/crunch_exception'
 
