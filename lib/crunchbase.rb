@@ -1,3 +1,4 @@
+require 'crunchbase/api'
 require 'crunchbase/person'
 
 module Crunchbase
