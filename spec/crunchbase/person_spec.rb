@@ -57,5 +57,10 @@ module Crunchbase
       person.tags.should == []
     end
     
+    it "should get from web" do
+      person = Person.get("steve-jobs")
+      person.first_name.should == "Steve"
+    end
+    
   end
 end
