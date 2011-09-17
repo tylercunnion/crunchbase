@@ -5,7 +5,7 @@ module Crunchbase
   describe API do
     
     it "should return a JSON hash" do
-      j = API.fetch(URI.parse(API::CB_URL + "person/steve-jobs.js"))
+      j = API.fetch('steve-jobs', 'person')
       j.class.should == Hash
     end
     

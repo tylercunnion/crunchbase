@@ -7,18 +7,21 @@ module Crunchbase
     CB_URL = 'http://api.crunchbase.com/v/1/'
     
     def self.person(permalink)
-      fetch_uri = URI.parse(CB_URL + "person/#{permalink}.js")
-      fetch(fetch_uri)
+      fetch(permalink, 'person')
     end
     
     def self.company(permalink)
-      fetch_uri = URI.parse(CB_URL + "company/#{permalink}.js")
-      fetch(fetch_uri)
+      fetch(permalink, 'company')
+    end
+    
+    def self.financial_organization(permalink)
+      fetch(permalink, 'financial-organization')
     end
     
     # Fetches URI and parses JSON. Raises Timeout::Error if fetching times out.
     # Raises CrunchException if the returned JSON indicates an error.
-    def self.fetch(uri)
+    def self.fetch(permalink, object_name)
+      uri = URI.parse(CB_URL + "#{object_name}/#{permalink}.js")
       resp = Timeout::timeout(5) {
         Net::HTTP.get(uri)
       }
