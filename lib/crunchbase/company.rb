@@ -45,7 +45,7 @@ module Crunchbase
       @overview = json["overview"]
       @image = json["image"]
       @products = json["products"]
-      @relationships = Relationship.array_from_relationship_list(json["relationships"])
+      @relationships = Relationship.array_from_relationship_list(json["relationships"]) if json["relationships"]
       @competitions = json["competitions"]
       @providerships = json["providerships"]
       @total_money_raised = json["total_money_raised"]

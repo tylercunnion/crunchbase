@@ -35,8 +35,8 @@ module Crunchbase
       @updated_at = DateTime.parse(json["updated_at"])
       @overview = json["overview"]
       
-      @relationships = Relationship.array_from_relationship_list(json["relationships"])
-      @investments = Investment.array_from_investment_list(json["investments"])
+      @relationships = Relationship.array_from_relationship_list(json["relationships"]) if json["relationships"]
+      @investments = Investment.array_from_investment_list(json["investments"]) if json["investments"]
       @milestones = json["milestones"]
       @video_embeds = json["video_embeds"]
       @external_links = json["external_links"]
