@@ -18,6 +18,14 @@ module Crunchbase
       fetch(permalink, 'financial-organization')
     end
     
+    def self.product(permalink)
+      fetch(permalink, 'product')
+    end
+    
+    def self.service_provider(permalink)
+      fetch(permalink, 'service-provider')
+    end
+    
     # Fetches URI and parses JSON. Raises Timeout::Error if fetching times out.
     # Raises CrunchException if the returned JSON indicates an error.
     def self.fetch(permalink, object_name)

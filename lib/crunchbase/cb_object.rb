@@ -10,8 +10,13 @@ module Crunchbase
       @alias_list.respond_to?('split') ? @alias_list.split(", ") : []
     end
     
+    
+    # Compares two objects, returning true if they have the same permalink
+    # (ie, represent the same entity). If you must ensure that the two objects
+    # also contain the same data, you should also compare the updated_at
+    # attributes.
     def ===(other)
-      @permalink == other.permalink && @updated_at == other.updated_at
+      @permalink == other.permalink
     end
     
   end
