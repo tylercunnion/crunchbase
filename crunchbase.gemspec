@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
+    "crunchbase.gemspec",
     "lib/crunchbase.rb",
     "lib/crunchbase/api.rb",
     "lib/crunchbase/cb_object.rb",
