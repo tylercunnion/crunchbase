@@ -61,6 +61,7 @@ module Crunchbase
       @external_links = json["external_links"]
     end
     
+    # Returns the date the company was founded, or nil if not provided.
     def founded
       begin
         founded = Date.new(@founded_year, @founded_month, @founded_day)
@@ -70,6 +71,7 @@ module Crunchbase
       return founded      
     end
     
+    # Returns the date the company was deadpooled, or nil if not provided.
     def deadpooled
       begin
         dp = Date.new(@deadpooled_year, @deadpooled_month, @deadpooled_day)

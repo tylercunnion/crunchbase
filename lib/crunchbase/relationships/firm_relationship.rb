@@ -3,7 +3,7 @@ module Crunchbase
     
     attr_reader :firm_name, :firm_permalink, :firm_type
     
-    def self.array_from_relationship_list
+    def self.array_from_relationship_list #:nodoc:
       raise CrunchException, "Method must be called from superclass Relationship"
     end
     

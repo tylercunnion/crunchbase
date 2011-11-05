@@ -3,6 +3,11 @@ require 'json'
 require 'timeout'
 
 module Crunchbase
+  
+  # Handles the actual calls to the Crunchbase API through a series of class
+  # methods, each referring to a CB entity type. Each method returns the raw
+  # JSON returned from the API. You should probably be using the factory
+  # methods provided on each entity class instead of calling these directly.
   class API
     CB_URL = 'http://api.crunchbase.com/v/1/'
     
@@ -25,6 +30,8 @@ module Crunchbase
     def self.service_provider(permalink)
       fetch(permalink, 'service-provider')
     end
+    
+    private
     
     # Fetches URI and parses JSON. Raises Timeout::Error if fetching times out.
     # Raises CrunchException if the returned JSON indicates an error.
