@@ -50,7 +50,7 @@ module Crunchbase
       @providerships = json["providerships"]
       @total_money_raised = json["total_money_raised"]
       @funding_rounds = json["funding_rounds"]
-      @investments = json["investments"]
+      @investments = Investment.array_from_investment_list(json['investments']) if json['investments']
       @acquisition = json["acquisition"]
       @acquisitions = json["acquisitions"]
       @offices = json["offices"]
