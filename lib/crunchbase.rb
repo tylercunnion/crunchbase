@@ -10,5 +10,5 @@ require 'crunchbase/relationships/person_relationship'
 require 'crunchbase/crunch_exception'
 
 module Crunchbase
-  VERSION = "0.0.1"
+  VERSION = "0.0.4"
 end
