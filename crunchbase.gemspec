@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{crunchbase}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Tyler Cunnion}]
-  s.date = %q{2011-09-18}
+  s.date = %q{2011-11-06}
   s.email = %q{tyler.cunnion@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
     "lib/crunchbase/cb_object.rb",
     "lib/crunchbase/company.rb",
     "lib/crunchbase/crunch_exception.rb",
+    "lib/crunchbase/financial_organization.rb",
     "lib/crunchbase/investment.rb",
     "lib/crunchbase/person.rb",
     "lib/crunchbase/relationship.rb",
@@ -35,6 +36,7 @@ Gem::Specification.new do |s|
     "lib/crunchbase/relationships/person_relationship.rb",
     "spec/crunchbase/api_spec.rb",
     "spec/crunchbase/company_spec.rb",
+    "spec/crunchbase/financial_organization_spec.rb",
     "spec/crunchbase/person_spec.rb",
     "spec/fixtures/brad-fitzpatrick.js",
     "spec/fixtures/steve-jobs.js",
@@ -55,12 +57,14 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
+      s.add_development_dependency(%q<rdoc>, [">= 0"])
     else
       s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
       s.add_dependency(%q<rcov>, [">= 0"])
+      s.add_dependency(%q<rdoc>, [">= 0"])
     end
   else
     s.add_dependency(%q<json>, [">= 0"])
@@ -68,6 +72,7 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
     s.add_dependency(%q<rcov>, [">= 0"])
+    s.add_dependency(%q<rdoc>, [">= 0"])
   end
 end
 
