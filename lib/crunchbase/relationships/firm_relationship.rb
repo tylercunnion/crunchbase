@@ -22,7 +22,7 @@ module Crunchbase
       when "company"
         Company.get(@firm_permalink)
       when "financial_org"
-        raise CrunchException, "Not implemented"
+        FinancialOrganization.get(@firm_permalink)
       else
         raise CrunchException, "Not implemented"
       end
