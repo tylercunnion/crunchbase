@@ -1,5 +1,11 @@
 require 'net/http'
-require 'json'
+
+begin
+  require 'yajl'
+rescue LoadError
+  require 'json'
+end
+
 require 'timeout'
 
 module Crunchbase
@@ -40,9 +46,17 @@ module Crunchbase
       resp = Timeout::timeout(5) {
         Net::HTTP.get(uri)
       }
-      j = JSON.parse(resp)
+      j = parser.parse(resp)
       raise CrunchException, j["error"] if j["error"]
       return j
+    end
+    
+    def self.parser
+      if defined?(Yajl)
+        Yajl::Parser
+      else
+        JSON
+      end
     end
     
     
