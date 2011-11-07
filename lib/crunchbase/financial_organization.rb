@@ -42,7 +42,7 @@ module Crunchbase
       @relationships = Relationship.array_from_relationship_list(json["relationships"]) if json["relationships"]
       @investments = Investment.array_from_investment_list(json['investments']) if json['investments']
       @milestones = json['milestones']
-      @providerships = json['providerships']
+      @providerships = Relationship.array_from_relationship_list(json['providerships']) if json["providerships"]
       @funds = json['funds']
       @video_embeds = json['video_embeds']
       @external_links = json['external_links']
