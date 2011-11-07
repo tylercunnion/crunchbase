@@ -11,6 +11,7 @@ module Crunchbase
       :overview, :image, :offices, :relationships, :investments, :milestones,
       :providerships, :funds, :video_embeds, :external_links
     
+    # Factory method to return a FinancialOrganization instance from a permalink
     def self.get(permalink)
       j = API.financial_organization(permalink)
       f = FinancialOrganization.new(j)

@@ -1,4 +1,6 @@
 module Crunchbase
+  
+  # Represents any object which can be pulled directly from the CB API.
   class CB_Object
 
     # Returns an array of tags

@@ -1,4 +1,6 @@
 module Crunchbase
+  # Superclass for all relationships. Used for both the relationships and
+  # providerships arrays on retrieved objects.
   class Relationship
     
     attr_reader :title

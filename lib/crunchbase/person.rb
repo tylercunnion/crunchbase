@@ -11,6 +11,7 @@ module Crunchbase
       :overview, :relationships, :investments, :milestones, :video_embeds,
       :external_links, :web_presences
     
+    # Factory method to return a Person instance from a permalink
     def self.get(permalink)
       j = API.person(permalink)
       p = Person.new(j)

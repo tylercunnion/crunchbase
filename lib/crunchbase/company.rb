@@ -13,7 +13,8 @@ module Crunchbase
       :providerships, :total_money_raised, :funding_rounds, :investments,
       :acquisition, :acquisitions, :offices, :milestones, :ipo, :video_embeds,
       :screenshots, :external_links
-      
+    
+    # Factory method to return a Company instance from a permalink  
     def self.get(permalink)
       j = API.company(permalink)
       c = Company.new(j)
