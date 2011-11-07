@@ -6,10 +6,9 @@ module Crunchbase
             
     attr_reader :first_name, :last_name, :permalink, :crunchbase_url,
       :homepage_url, :birthplace, :twitter_username, :blog_url, :blog_feed_url,
-      :affiliation_name, :born_year, :born_month, :born_day, :created_at,
-      :updated_at, :overview, :tag_list, :alias_list, :created_at, :updated_at,
-      :overview, :relationships, :investments, :milestones, :video_embeds,
-      :external_links, :web_presences
+      :affiliation_name, :created_at, :updated_at, :overview, :tag_list, 
+      :alias_list, :created_at, :updated_at, :overview, :relationships, 
+      :investments, :milestones, :video_embeds, :external_links, :web_presences
     
     # Factory method to return a Person instance from a permalink
     def self.get(permalink)

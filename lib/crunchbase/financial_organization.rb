@@ -6,10 +6,9 @@ module Crunchbase
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :phone_number, :description,
-      :email_address, :number_of_employees, :founded_year, :founded_month,
-      :founded_day, :tag_list, :alias_list, :created_at, :updated_at,
-      :overview, :image, :offices, :relationships, :investments, :milestones,
-      :providerships, :funds, :video_embeds, :external_links
+      :email_address, :number_of_employees, :tag_list, :alias_list, 
+      :created_at, :updated_at, :overview, :image, :offices, :relationships, 
+      :investments, :milestones, :providerships, :funds, :video_embeds, :external_links
     
     # Factory method to return a FinancialOrganization instance from a permalink
     def self.get(permalink)
