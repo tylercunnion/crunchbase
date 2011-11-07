@@ -1,6 +1,8 @@
 module Crunchbase
   class Investment
     
+    include Crunchbase::DateMethods
+    
     attr_reader :funding_round_code, :funding_source_url,
       :funding_source_description, :raised_amount, :raised_currency_code, 
       :company_name, :company_permalink
@@ -32,12 +34,7 @@ module Crunchbase
     end
     
     def funded_date
-      begin
-        date = Date.new(@funded_year, @funded_month, @funded_day)
-      rescue
-        nil
-      end
-      date
+      @funded_date ||= date_from_components(@funded_year, @funded_month, @funded_day)
     end
       
   end

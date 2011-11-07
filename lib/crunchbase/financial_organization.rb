@@ -2,6 +2,8 @@ require 'date'
 module Crunchbase
   class FinancialOrganization < CB_Object
     
+    include Crunchbase::DateMethods
+    
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :phone_number, :description,
       :email_address, :number_of_employees, :founded_year, :founded_month,
@@ -48,12 +50,7 @@ module Crunchbase
     
     # Returns the date the financial org was founded, or nil if not provided.
     def founded
-      begin
-        founded = Date.new(@founded_year, @founded_month, @founded_day)
-      rescue
-        founded = nil
-      end
-      return founded      
+      @founded ||= date_from_components(@founded_year, @founded_month, @founded_day)    
     end
   end
 end

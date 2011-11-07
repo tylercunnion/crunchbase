@@ -1,6 +1,8 @@
 require 'date'
 module Crunchbase
   class Person < CB_Object
+    
+    include Crunchbase::DateMethods
             
     attr_reader :first_name, :last_name, :permalink, :crunchbase_url,
       :homepage_url, :birthplace, :twitter_username, :blog_url, :blog_feed_url,
@@ -46,12 +48,7 @@ module Crunchbase
     # Returns a date object, or nil if Date cannot be created from
     # provided information.
     def born
-      begin
-        born = Date.new(@born_year, @born_month, @born_day)
-      rescue
-        born = nil
-      end
-      born
+      @born ||= date_from_components(@born_year, @born_month, @born_day)
     end
     
   end

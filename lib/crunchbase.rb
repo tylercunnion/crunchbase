@@ -1,5 +1,6 @@
 require 'crunchbase/api'
 require 'crunchbase/cb_object'
+require 'crunchbase/date_methods'
 require 'crunchbase/company'
 require 'crunchbase/financial_organization'
 require 'crunchbase/investment'

@@ -2,6 +2,8 @@ require 'date'
 module Crunchbase
   class Company < CB_Object
     
+    include Crunchbase::DateMethods
+    
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :category_code, :number_of_employees,
       :founded_year, :founded_month, :founded_day, :deadpooled_year,
@@ -63,23 +65,13 @@ module Crunchbase
     
     # Returns the date the company was founded, or nil if not provided.
     def founded
-      begin
-        founded = Date.new(@founded_year, @founded_month, @founded_day)
-      rescue
-        founded = nil
-      end
-      return founded      
+      @founded ||= date_from_components(@founded_year, @founded_month, @founded_day)   
     end
     
     # Returns the date the company was deadpooled, or nil if not provided.
     def deadpooled
-      begin
-        dp = Date.new(@deadpooled_year, @deadpooled_month, @deadpooled_day)
-      rescue
-        dp = nil
-      end
-      return dp
+      @deadpooled ||= date_from_components(@deadpooled_year, @deadpooled_month, @deadpooled_day)
     end
-        
+    
   end
 end
