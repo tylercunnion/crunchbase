@@ -2,17 +2,23 @@
 
 Library for pulling data from the CrunchBase API.
 
-== Usage
+== Dependencies
+
+The Crunchbase API is entirely JSON-based. By default, if present, the gem will
+use the {YAJL gem}[http://github.com/brianmario/yajl-ruby]; if not, it will
+fall back to the {JSON gem}[http://flori.github.com/json/]. Please ensure one
+of the two is installed.
+
+== Basic Usage
 
    require 'crunchbase'
    steve = Crunchbase::Person.get("steve-jobs")
-   facebook = Crunchbase::Company.get("facebook")
-
+   facebook = Crunchbase::Company.get("facebook")    
 
 == Copyright
 
-Copyright (c) 2011 Tyler Cunnion. See LICENSE.txt for
-further details.
+Copyright (c) 2011 Tyler Cunnion. This software is made available under the 
+MIT/X11 license. See LICENSE.txt for further details.
 
-I am not affiliated with AOL, Crunchbase, or anyone really.
-
+I am not affiliated in any way with AOL, TechCrunch, Crunchbase, or anyone
+really.

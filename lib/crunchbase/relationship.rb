@@ -6,8 +6,7 @@ module Crunchbase
     attr_reader :title
     
     # Takes a relationship list (directly from the JSON hash) and returns an
-    # array of instances of Relationship subclasses. Raises CrunchException if
-    # the relationship is not one of the recognized types.
+    # array of instances of Relationship subclasses.
     def self.array_from_relationship_list(list)
       list.map do |l|
         if l["person"]
@@ -17,7 +16,8 @@ module Crunchbase
         elsif l["provider"]
           ProviderRelationship.new(l)
         else
-          #raise CrunchException, "Relationship type not recognized"
+          # "Relationship type not recognized"
+          # TODO: Figure out how to log this
           next
         end
       end
