@@ -25,7 +25,7 @@ module Crunchbase
       @overview = json["overview"]
       @image = json["image"]
       @offices = json["offices"]
-      @providerships = json["providerships"]
+      @providerships = Relationship.array_from_relationship_list(json["providerships"]) if json["providerships"]
       @external_links = json["external_links"]
     end
     
