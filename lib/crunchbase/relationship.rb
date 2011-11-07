@@ -14,8 +14,11 @@ module Crunchbase
           PersonRelationship.new(l)
         elsif l["firm"]
           FirmRelationship.new(l)
+        elsif l["provider"]
+          ProviderRelationship.new(l)
         else
-          raise CrunchException, "Relationship type not recognized"
+          #raise CrunchException, "Relationship type not recognized"
+          next
         end
       end
     end
