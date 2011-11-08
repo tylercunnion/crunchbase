@@ -6,9 +6,9 @@ module Crunchbase
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :stage_code, :deadpooled_url,
-      :invite_share_url, :tag_list, :alias_list, :created_at, :updated_at,
-      :overview, :image, :company_permalink, :company_name, :milestones, 
-      :video_embeds, :external_links
+      :invite_share_url, :created_at, :updated_at, :overview, :image, 
+      :company_permalink, :company_name, :milestones, :video_embeds, 
+      :external_links
       
     def self.get(permalink)
       j = API.product(permalink)
