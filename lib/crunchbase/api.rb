@@ -48,7 +48,7 @@ module Crunchbase
         fetch_but_follow_redirects(uri, 5)
       }
 
-      j = parser.parse(resp)
+      j = parser.parse(resp.body)
       raise CrunchException, j["error"] if j["error"]
       return j
     end
