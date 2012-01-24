@@ -42,7 +42,7 @@ module Crunchbase
     # Fetches URI and parses JSON. Raises Timeout::Error if fetching times out.
     # Raises CrunchException if the returned JSON indicates an error.
     def self.fetch(permalink, object_name)
-      uri = URI.parse(CB_URL + "#{object_name}/#{permalink}.js")
+      uri = CB_URL + "#{object_name}/#{permalink}.js"
 
       resp = Timeout::timeout(5) {
         fetch_but_follow_redirects(uri, 5)
