@@ -46,7 +46,7 @@ module Crunchbase
       resp = Timeout::timeout(5) {
         fetch_but_follow_redirects(uri, 5)
       }
-      j = parser.parse(resp.body)
+      j = parser.parse(resp)
       raise CrunchException, j["error"] if j["error"]
       return j
     end
@@ -66,7 +66,7 @@ module Crunchbase
       req = Net::HTTP::Get.new(url.path)
       response = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
       case response
-      when Net::HTTPSuccess     then response
+      when Net::HTTPSuccess     then response.body
       when Net::HTTPRedirection then fetch_but_follow_redirects(response['location'], limit - 1)
       else
         response.error!
