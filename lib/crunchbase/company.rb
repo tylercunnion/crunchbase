@@ -7,7 +7,7 @@ module Crunchbase
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :category_code, :number_of_employees,
       :deadpooled_url, :email_address, :phone_number, :description, 
-      :created_at, :updated_at, :overview, :image, :products, :relationships, 
+      :created_at, :updated_at, :overview, :image, :relationships, 
       :competitions, :providerships, :total_money_raised, :funding_rounds, 
       :investments, :acquisition, :acquisitions, :offices, :milestones, :ipo, 
       :video_embeds, :screenshots, :external_links
@@ -45,7 +45,7 @@ module Crunchbase
       @updated_at = DateTime.parse(json["updated_at"])
       @overview = json["overview"]
       @image = json["image"]
-      @products = json["products"]
+      @products_list = json["products"]
       @relationships = Relationship.array_from_relationship_list(json["relationships"]) if json["relationships"]
       @competitions = json["competitions"]
       @providerships = Relationship.array_from_relationship_list(json["providerships"]) if json["providerships"]
@@ -70,6 +70,10 @@ module Crunchbase
     # Returns the date the company was deadpooled, or nil if not provided.
     def deadpooled
       @deadpooled ||= date_from_components(@deadpooled_year, @deadpooled_month, @deadpooled_day)
+    end
+    
+    def products
+      @products ||= @products_list.map {|p| Product.get(p['permalink']) }
     end
     
   end
