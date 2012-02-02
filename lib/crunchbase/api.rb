@@ -44,7 +44,7 @@ module Crunchbase
     def self.fetch(permalink, object_name)
       uri = CB_URL + "#{object_name}/#{permalink}.js"
       resp = Timeout::timeout(60) {
-        fetch_but_follow_redirects(uri, 5)
+        get_url_following_redirects(uri, 5)
       }
       j = parser.parse(resp)
       raise CrunchException, j["error"] if j["error"]
@@ -59,17 +59,19 @@ module Crunchbase
       end
     end
 
-    def self.fetch_but_follow_redirects(uri_str, limit = 10)
+    def self.get_url_following_redirects(uri_str, limit = 10)
       raise CrunchException, 'HTTP redirect too deep' if limit == 0
 
       url = URI.parse(uri_str)
       req = Net::HTTP::Get.new(url.path)
       response = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
       case response
-      when Net::HTTPSuccess     then response.body
-      when Net::HTTPRedirection then fetch_but_follow_redirects(response['location'], limit - 1)
-      else
-        response.error!
+        when Net::HTTPSuccess
+          response.body
+        when Net::HTTPRedirection
+          get_url_following_redirects(response['location'], limit - 1)
+        else
+          response.error!
       end
     end
 
