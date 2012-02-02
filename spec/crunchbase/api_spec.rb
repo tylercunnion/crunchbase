@@ -17,6 +17,11 @@ module Crunchbase
     it "should raise exception on unfound person" do
       expect { API.person("not-real") }.to raise_error
     end
+    
+    it "should follow redirects" do
+      c = Company.get("adobe")
+      c.name.should == "Adobe Systems"
+    end
 
   end
 end
