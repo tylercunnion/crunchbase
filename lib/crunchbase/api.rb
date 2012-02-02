@@ -43,7 +43,7 @@ module Crunchbase
     # Raises CrunchException if the returned JSON indicates an error.
     def self.fetch(permalink, object_name)
       uri = CB_URL + "#{object_name}/#{permalink}.js"
-      resp = Timeout::timeout(5) {
+      resp = Timeout::timeout(60) {
         fetch_but_follow_redirects(uri, 5)
       }
       j = parser.parse(resp)
