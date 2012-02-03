@@ -17,14 +17,9 @@ module Crunchbase
   class API
     CB_URL = 'http://api.crunchbase.com/v/1/'
     @timeout_limit = 60
+    @redirect_limit = 1
     
-    def self.timeout_limit
-      @timeout_limit
-    end
-
-    def self.timeout_limit=(new_limit)
-      @timeout_limit = new_limit
-    end
+    class << self; attr_accessor :timeout_limit, :redirect_limit end
 
     def self.person(permalink)
       fetch(permalink, 'person')
@@ -53,7 +48,7 @@ module Crunchbase
     def self.fetch(permalink, object_name)
       uri = CB_URL + "#{object_name}/#{permalink}.js"
       resp = Timeout::timeout(@timeout_limit) {
-        get_url_following_redirects(uri, 5)
+        get_url_following_redirects(uri, @redirect_limit)
       }
       j = parser.parse(resp)
       raise CrunchException, j["error"] if j["error"]
