@@ -17,7 +17,7 @@ of the two is installed.
 
 == Copyright
 
-Copyright (c) 2011 Tyler Cunnion. This software is made available under the 
+Copyright (c) 2011-12 Tyler Cunnion. This software is made available under the 
 MIT/X11 license. See LICENSE.txt for further details.
 
 I am not affiliated in any way with AOL, TechCrunch, Crunchbase, or anyone
