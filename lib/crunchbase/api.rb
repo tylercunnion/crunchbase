@@ -16,6 +16,15 @@ module Crunchbase
   # methods provided on each entity class instead of calling these directly.
   class API
     CB_URL = 'http://api.crunchbase.com/v/1/'
+    @timeout_limit = 60
+    
+    def self.timeout_limit
+      @timeout_limit
+    end
+
+    def self.timeout_limit=(new_limit)
+      @timeout_limit = new_limit
+    end
 
     def self.person(permalink)
       fetch(permalink, 'person')
@@ -43,7 +52,7 @@ module Crunchbase
     # Raises CrunchException if the returned JSON indicates an error.
     def self.fetch(permalink, object_name)
       uri = CB_URL + "#{object_name}/#{permalink}.js"
-      resp = Timeout::timeout(60) {
+      resp = Timeout::timeout(@timeout_limit) {
         get_url_following_redirects(uri, 5)
       }
       j = parser.parse(resp)
