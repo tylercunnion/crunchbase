@@ -3,6 +3,7 @@ module Crunchbase
     include Enumerable
     
     attr_reader :size, :crunchbase_url
+    alias :length :size
     
     def self.find(query)
       j = API.search(query)
@@ -29,12 +30,10 @@ module Crunchbase
       end
     end
     
-    def each(&block)
+    # Calls _block_ once for each search result, passing that item as a
+    # parameter.
+    def each(&block) # :yields: result
       0.upto(@size - 1) {|x| yield self[x]}
-    end
-    
-    def length
-      size
     end
     
     private
