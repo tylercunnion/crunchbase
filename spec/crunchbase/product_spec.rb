@@ -7,6 +7,11 @@ module Crunchbase
       product = Product.get("iphone")
       product.name.should == "iPhone"
     end
+
+    it "should find by name" do
+      product = Product.find("iPhone")
+      product.permalink.should == "iphone"
+    end
     
     it "should return date for launched" do
       product = Product.new({"launched_year" => 2004, "launched_month" => 2,

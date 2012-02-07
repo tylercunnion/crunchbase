@@ -14,6 +14,10 @@ module Crunchbase
       j = API.product(permalink)
       return Product.new(j)
     end
+
+    def self.find(name)
+      get(API.permalink({name: name}, "products")["permalink"])
+    end
     
     def initialize(json)
       @name = json['name']
