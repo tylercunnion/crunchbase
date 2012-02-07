@@ -62,7 +62,7 @@ module Crunchbase
       require "cgi"
       qs = parameters.map{|k,v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v)}"}.join('&')
       uri = CB_URL + "#{category}/permalink?#{qs}"
-      resp = Timeout::timeout(60) {
+      resp = Timeout::timeout(@timeout_limit) {
         Net::HTTP.get(URI.parse(uri))
       }
       j = parser.parse(resp)
