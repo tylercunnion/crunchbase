@@ -16,6 +16,10 @@ module Crunchbase
       p = Person.new(j)
       return p
     end
+
+    def self.find(first_name, last_name)
+      get(API.permalink({first_name: first_name, last_name: last_name}, "people")["permalink"])
+    end
     
     def initialize(json)
       @first_name = json["first_name"]

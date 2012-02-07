@@ -12,6 +12,10 @@ module Crunchbase
       s = ServiceProvider.new(j)
       return s
     end
+
+    def self.find(name)
+      get(API.permalink({name: name}, "service-providers")["permalink"])
+    end
     
     def initialize(json)
       @name = json["name"]

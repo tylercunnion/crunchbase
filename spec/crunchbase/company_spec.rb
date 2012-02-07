@@ -7,6 +7,11 @@ module Crunchbase
       company = Company.get("facebook")
       company.name.should == "Facebook"
     end
+
+    it "should find companies by name" do
+      company = Company.find("Adobe Systems")
+      company.permalink.should == "adobe-systems"
+    end
     
     it "should return date for founded" do
       company = Company.new({"founded_year" => 2004, "founded_month" => 2,
