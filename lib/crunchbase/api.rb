@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'net/http'
 
 begin
@@ -45,6 +46,20 @@ module Crunchbase
       uri = CB_URL + "#{object_name}/#{permalink}.js"
       resp = Timeout::timeout(60) {
         get_url_following_redirects(uri, 5)
+      }
+      j = parser.parse(resp)
+      raise CrunchException, j["error"] if j["error"]
+      return j
+    end
+
+    # Searches for a permalink in a particular category, and parses the returned
+    # JSON.
+    def self.permalink(parameters, category)
+      require "cgi"
+      qs = parameters.map{|k,v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v)}"}.join('&')
+      uri = CB_URL + "#{category}/permalink?#{qs}"
+      resp = Timeout::timeout(60) {
+        Net::HTTP.get(URI.parse(uri))
       }
       j = parser.parse(resp)
       raise CrunchException, j["error"] if j["error"]
