@@ -11,9 +11,24 @@ of the two is installed.
 
 == Basic Usage
 
+If you already know the permalink for a given entity, you can grab the entry
+with the +get+ method.
+
    require 'crunchbase'
    steve = Crunchbase::Person.get("steve-jobs")
    facebook = Crunchbase::Company.get("facebook")    
+   
+If you know the name of the entity but not the permalink, you can use the
++find+ method.
+
+    steve = Crunchbase::Person.find("Steve", "Jobs")
+    github = Crunchbase::Company.find("Github")
+
+Note that finding using a name performs two HTTP requests internally, the first
+returning the permalink associated with the name, and the second which returns
+the actual data.
+
+Coming Soon: Search, List of Entities
 
 == Copyright
 
