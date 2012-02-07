@@ -48,23 +48,13 @@ module Crunchbase
     # Raises CrunchException if the returned JSON indicates an error.
     def self.fetch(permalink, object_name)
       uri = CB_URL + "#{object_name}/#{permalink}.js"
-      resp = Timeout::timeout(@timeout_limit) {
-        get_url_following_redirects(uri, @redirect_limit)
-      }
-      j = parser.parse(resp)
-      raise CrunchException, j["error"] if j["error"]
-      return j
+      get_json_response(uri)
     end
     
     def self.search(query, page=1)
       require "cgi"
       uri = CB_URL + "search.js?query=#{CGI.escape(query)}&page=#{page}"
-      resp = Timeout::timeout(@timeout_limit) {
-        get_url_following_redirects(uri, @redirect_limit)
-      }
-      j = parser.parse(resp)
-      raise CrunchException, j["error"] if j["error"]
-      return j
+      get_json_response(uri)
     end
 
     # Searches for a permalink in a particular category, and parses the returned
@@ -73,12 +63,7 @@ module Crunchbase
       require "cgi"
       qs = parameters.map{|k,v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v)}"}.join('&')
       uri = CB_URL + "#{category}/permalink?#{qs}"
-      resp = Timeout::timeout(@timeout_limit) {
-        Net::HTTP.get(URI.parse(uri))
-      }
-      j = parser.parse(resp)
-      raise CrunchException, j["error"] if j["error"]
-      return j
+      get_json_response(uri)
     end
 
     def self.parser
@@ -88,19 +73,28 @@ module Crunchbase
         JSON
       end
     end
+    
+    def self.get_json_response(uri)
+      resp = Timeout::timeout(@timeout_limit) {
+        get_url_following_redirects(uri, @redirect_limit)
+      }
+      j = parser.parse(resp)
+      raise CrunchException, j["error"] if j["error"]
+      j
+    end
 
     def self.get_url_following_redirects(uri_str, limit = 10)
       raise CrunchException, 'HTTP redirect too deep' if limit == 0
 
       url = URI.parse(uri_str)
-      req = Net::HTTP::Get.new(url.path)
-      response = Net::HTTP.start(url.host, url.port) { |http| http.request(req) }
+      response = Net::HTTP.start(url.host, url.port) { |http| http.get(url.request_uri) }
       case response
         when Net::HTTPSuccess, Net::HTTPNotFound
           response.body
         when Net::HTTPRedirection
           get_url_following_redirects(response['location'], limit - 1)
         else
+          puts response
           response.error!
       end
     end
