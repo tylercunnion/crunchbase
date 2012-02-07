@@ -60,6 +60,11 @@ module Crunchbase
       person = Person.get("steve-jobs")
       person.first_name.should == "Steve"
     end
+
+    it "should find a person by name" do
+      person = Person.find("Steve", "Jobs")
+      person.permalink.should == "steve-jobs"
+    end
     
     it "should be equal to another with the same permalink and last updated" do
       person = Person.get("steve-jobs")

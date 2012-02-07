@@ -23,5 +23,11 @@ module Crunchbase
       c.name.should == "Adobe Systems"
     end
 
+    it "should find a permalink from a well-formed search" do
+      j = API.permalink({name: "Accel Partners"}, "financial-organizations")
+      j.class.should == Hash
+      j["permalink"].should == 'accel-partners'
+    end
+
   end
 end

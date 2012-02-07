@@ -7,6 +7,11 @@ module Crunchbase
       finorg = FinancialOrganization.get("robin-hood-ventures")
       finorg.name.should == "Robin Hood Ventures"
     end    
+
+    it "should find by name" do
+      f = FinancialOrganization.find("Accel Partners")
+      f.permalink.should == "accel-partners"
+    end
     
     it "should return date for founded" do
       finorg = FinancialOrganization.new({"founded_year" => 2004, "founded_month" => 2,
