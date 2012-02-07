@@ -43,29 +43,8 @@ module Crunchbase
     end
 
     private
-
-    # Fetches URI and parses JSON. Raises Timeout::Error if fetching times out.
-    # Raises CrunchException if the returned JSON indicates an error.
-    def self.fetch(permalink, object_name)
-      uri = CB_URL + "#{object_name}/#{permalink}.js"
-      get_json_response(uri)
-    end
     
-    def self.search(query, page=1)
-      require "cgi"
-      uri = CB_URL + "search.js?query=#{CGI.escape(query)}&page=#{page}"
-      get_json_response(uri)
-    end
-
-    # Searches for a permalink in a particular category, and parses the returned
-    # JSON.
-    def self.permalink(parameters, category)
-      require "cgi"
-      qs = parameters.map{|k,v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v)}"}.join('&')
-      uri = CB_URL + "#{category}/permalink?#{qs}"
-      get_json_response(uri)
-    end
-
+    # Returns the JSON parser, whether that's an instance of Yajl or JSON
     def self.parser
       if defined?(Yajl)
         Yajl::Parser
@@ -73,7 +52,31 @@ module Crunchbase
         JSON
       end
     end
+
+    # Fetches URI for the permalink interface.
+    def self.fetch(permalink, object_name)
+      uri = CB_URL + "#{object_name}/#{permalink}.js"
+      get_json_response(uri)
+    end
     
+    # Fetches URI for the search interface.
+    def self.search(query, page=1)
+      require "cgi"
+      uri = CB_URL + "search.js?query=#{CGI.escape(query)}&page=#{page}"
+      get_json_response(uri)
+    end
+
+    # Searches for a permalink in a particular category.
+    def self.permalink(parameters, category)
+      require "cgi"
+      qs = parameters.map{|k,v| "#{CGI.escape(k.to_s)}=#{CGI.escape(v)}"}.join('&')
+      uri = CB_URL + "#{category}/permalink?#{qs}"
+      get_json_response(uri)
+    end
+    
+    # Gets specified URI, then parses the returned JSON. Raises Timeout error 
+    # if request time exceeds set limit. Raises CrunchException if returned
+    # JSON contains an error.
     def self.get_json_response(uri)
       resp = Timeout::timeout(@timeout_limit) {
         get_url_following_redirects(uri, @redirect_limit)
@@ -83,6 +86,8 @@ module Crunchbase
       j
     end
 
+    # Performs actual HTTP requests, recursively if a redirect response is
+    # encountered. Will raise HTTP error if response is not 200, 404, or 3xx.
     def self.get_url_following_redirects(uri_str, limit = 10)
       raise CrunchException, 'HTTP redirect too deep' if limit == 0
 
@@ -94,7 +99,6 @@ module Crunchbase
         when Net::HTTPRedirection
           get_url_following_redirects(response['location'], limit - 1)
         else
-          puts response
           response.error!
       end
     end
