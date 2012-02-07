@@ -18,7 +18,7 @@ module Crunchbase
   class API
     CB_URL = 'http://api.crunchbase.com/v/1/'
     @timeout_limit = 60
-    @redirect_limit = 1
+    @redirect_limit = 2
     
     class << self; attr_accessor :timeout_limit, :redirect_limit end
 
@@ -79,6 +79,7 @@ module Crunchbase
     end
 
     def self.get_url_following_redirects(uri_str, limit = 10)
+      puts uri_str
       raise CrunchException, 'HTTP redirect too deep' if limit == 0
 
       url = URI.parse(uri_str)
