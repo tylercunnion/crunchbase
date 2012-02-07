@@ -11,6 +11,8 @@ require 'crunchbase/relationship'
 require 'crunchbase/relationships/firm_relationship'
 require 'crunchbase/relationships/person_relationship'
 require 'crunchbase/relationships/provider_relationship'
+require 'crunchbase/search'
+require 'crunchbase/search_result'
 require 'crunchbase/crunch_exception'
 
 module Crunchbase
