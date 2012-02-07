@@ -55,6 +55,17 @@ module Crunchbase
       raise CrunchException, j["error"] if j["error"]
       return j
     end
+    
+    def self.search(query, page=1)
+      require "cgi"
+      uri = CB_URL + "search.js?query=#{CGI.escape(query)}&page=#{page}"
+      resp = Timeout::timeout(@timeout_limit) {
+        get_url_following_redirects(uri, @redirect_limit)
+      }
+      j = parser.parse(resp)
+      raise CrunchException, j["error"] if j["error"]
+      return j
+    end
 
     # Searches for a permalink in a particular category, and parses the returned
     # JSON.
