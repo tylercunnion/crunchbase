@@ -30,6 +30,10 @@ module Crunchbase
       end
     end
     
+    def to_ary
+      self.map{|result| result}
+    end
+    
     # Calls _block_ once for each search result, passing that item as a
     # parameter.
     def each(&block) # :yields: result
