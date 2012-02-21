@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{crunchbase}
-  s.version = "0.0.5"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Tyler Cunnion}]
-  s.date = %q{2012-02-02}
+  s.date = %q{2012-02-21}
   s.email = %q{tyler.cunnion@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -37,12 +37,16 @@ Gem::Specification.new do |s|
     "lib/crunchbase/relationships/firm_relationship.rb",
     "lib/crunchbase/relationships/person_relationship.rb",
     "lib/crunchbase/relationships/provider_relationship.rb",
+    "lib/crunchbase/search.rb",
+    "lib/crunchbase/search_result.rb",
     "lib/crunchbase/service_provider.rb",
     "spec/crunchbase/api_spec.rb",
     "spec/crunchbase/company_spec.rb",
     "spec/crunchbase/financial_organization_spec.rb",
     "spec/crunchbase/person_spec.rb",
     "spec/crunchbase/product_spec.rb",
+    "spec/crunchbase/search_result_spec.rb",
+    "spec/crunchbase/search_spec.rb",
     "spec/crunchbase/service_provider_spec.rb",
     "spec/fixtures/brad-fitzpatrick.js",
     "spec/fixtures/steve-jobs.js",
