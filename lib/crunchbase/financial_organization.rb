@@ -1,5 +1,6 @@
 require 'date'
 module Crunchbase
+  # Represents a Financial Organization listed in the Crunchbase.
   class FinancialOrganization < CB_Object
     
     include Crunchbase::DateMethods

@@ -1,5 +1,6 @@
 require 'date'
 module Crunchbase
+  # Represents a Company listed in the Crunchbase.
   class Company < CB_Object
     
     include Crunchbase::DateMethods
@@ -19,6 +20,7 @@ module Crunchbase
       return c
     end
 
+    # Factory method to return a Company instance from a company name.
     def self.find(name)
       get(API.permalink({name: name}, "companies")["permalink"])
     end
@@ -76,6 +78,7 @@ module Crunchbase
       @deadpooled ||= date_from_components(@deadpooled_year, @deadpooled_month, @deadpooled_day)
     end
     
+    # Returns an array of Product objects, representing this Company's products.
     def products
       @products ||= @products_list.map {|p| Product.get(p['permalink']) }
     end

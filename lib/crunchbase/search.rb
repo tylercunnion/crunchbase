@@ -1,10 +1,24 @@
 module Crunchbase
+  
+  # The Search class provides access to the Crunchbase search API. To perform a
+  # search, call the find class method, which returns an object of the Search
+  # class. This object represents an array of SearchResult objects, which may
+  # be addressed in a way analogous to an Array. These results are loaded on
+  # demand, in line with the CB API which returns results in pages of 10. When
+  # requesting a result index that has not been loaded yet, a new request is
+  # made to fetch it, resulting in a small delay. The class implements the
+  # Enumerable module, allowing usage of +map+, +select+, etc. If this is not
+  # sufficient, and full access to the underlying array is required, you may
+  # call to_ary, which will return the entire array including all results. If
+  # not all results have been fetched yet, there will be a delay to retrieve
+  # them, so consider this if your search contains a large number of results.
   class Search
     include Enumerable
     
     attr_reader :size, :crunchbase_url
     alias :length :size
     
+    # Performs a Crunchbase search for query.
     def self.find(query)
       j = API.search(query)
       s = Search.new(query, j)
@@ -30,6 +44,9 @@ module Crunchbase
       end
     end
     
+    # Returns array of all search results (not just ones currently loaded.)
+    # This enables the user to take advantage of all Array methods, not just
+    # the ones implmented on Search.
     def to_ary
       self.map{|result| result}
     end

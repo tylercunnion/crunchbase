@@ -8,6 +8,7 @@ module Crunchbase
       @tag_list.respond_to?('split') ? @tag_list.split(', ') : []
     end
     
+    # Returns an array of aliases
     def aliases
       @alias_list.respond_to?('split') ? @alias_list.split(", ") : []
     end

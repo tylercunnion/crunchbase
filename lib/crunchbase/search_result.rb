@@ -1,4 +1,8 @@
 module Crunchbase
+  # Represents a single search result arising from a Search. The information
+  # returned from a search includes the name, namespace (i.e. entity type),
+  # permalink, and an overview. You may also choose to retrieve the full
+  # entity with the entity method.  
   class SearchResult
     attr_reader :permalink, :crunchbase_url, :namespace, :overview
     
