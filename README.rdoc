@@ -9,7 +9,7 @@ use the {YAJL gem}[http://github.com/brianmario/yajl-ruby]; if not, it will
 fall back to the {JSON gem}[http://flori.github.com/json/]. Please ensure one
 of the two is installed.
 
-== Basic Usage
+== Usage
 
 If you already know the permalink for a given entity, you can grab the entry
 with the +get+ method.
@@ -28,7 +28,28 @@ Note that finding using a name performs two HTTP requests internally, the first
 returning the permalink associated with the name, and the second which returns
 the actual data.
 
-Coming Soon: Search, List of Entities
+=== Search
+
+Searching the Crunchbase is possible with the Search class.
+
+   s = Crunchbase::Search.find("widgets")
+   
+You can access the search results by treating the returned Search instance as
+an array.
+
+   first_result = s[0]
+   s.each { |result| puts result.name }
+  
+While Search does include the Enumerable module, it does not implement all of 
+the methods of Array. If you need to treat the results as an array in a way not
+supported, you can call +to_ary+; this prefetches all result pages (if they have
+not already been loaded), so it may entail a slight delay, depending on the
+number of results.
+
+   all_results = s.to_ary
+   result_slice = s[3..6]
+
+Coming Soon: List of Entities
 
 == Copyright
 
