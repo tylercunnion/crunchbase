@@ -17,29 +17,35 @@ module Crunchbase
   # methods provided on each entity class instead of calling these directly.
   class API
     CB_URL = 'http://api.crunchbase.com/v/1/'
+    SUPPORTED_ENTITIES = ['person', 'company', 'financial-organization', 'product', 'service-provider']
     @timeout_limit = 60
     @redirect_limit = 2
     
     class << self; attr_accessor :timeout_limit, :redirect_limit end
+    
+    def self.single_entity(permalink, entity_name)
+      raise CrunchException unless SUPPORTED_ENTITIES.include?(entity_name)
+      fetch(permalink, entity_name)
+    end
 
     def self.person(permalink)
-      fetch(permalink, 'person')
+      single_entity(permalink, 'person')
     end
 
     def self.company(permalink)
-      fetch(permalink, 'company')
+      single_entity(permalink, 'company')
     end
 
     def self.financial_organization(permalink)
-      fetch(permalink, 'financial-organization')
+      single_entity(permalink, 'financial-organization')
     end
 
     def self.product(permalink)
-      fetch(permalink, 'product')
+      single_entity(permalink, 'product')
     end
 
     def self.service_provider(permalink)
-      fetch(permalink, 'service-provider')
+      single_entity(permalink, 'service-provider')
     end
 
     private

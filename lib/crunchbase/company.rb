@@ -3,6 +3,8 @@ module Crunchbase
   # Represents a Company listed in the Crunchbase.
   class Company < CB_Object
     
+    ENT_NAME = "company"
+    
     include Crunchbase::DateMethods
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
