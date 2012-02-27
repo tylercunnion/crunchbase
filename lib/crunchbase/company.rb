@@ -4,6 +4,7 @@ module Crunchbase
   class Company < CB_Object
     
     ENT_NAME = "company"
+    ENT_PLURAL = "companies"
     
     include Crunchbase::DateMethods
     
@@ -14,11 +15,6 @@ module Crunchbase
       :competitions, :providerships, :total_money_raised, :funding_rounds, 
       :investments, :acquisition, :acquisitions, :offices, :milestones, :ipo, 
       :video_embeds, :screenshots, :external_links
-
-    # Factory method to return a Company instance from a company name.
-    def self.find(name)
-      get(API.permalink({name: name}, "companies")["permalink"])
-    end
     
     def initialize(json)
       @name = json["name"]

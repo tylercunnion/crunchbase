@@ -3,6 +3,7 @@ module Crunchbase
   class Product < CB_Object
     
     ENT_NAME = "product"
+    ENT_PLURAL = "products"
     
     include Crunchbase::DateMethods
     
@@ -11,10 +12,6 @@ module Crunchbase
       :invite_share_url, :created_at, :updated_at, :overview, :image, 
       :company_permalink, :company_name, :milestones, :video_embeds, 
       :external_links
-      
-    def self.find(name)
-      get(API.permalink({name: name}, "products")["permalink"])
-    end
     
     def initialize(json)
       @name = json['name']

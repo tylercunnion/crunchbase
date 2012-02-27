@@ -5,6 +5,7 @@ module Crunchbase
     
     # Must be overridden in subclasses
     ENT_NAME = "undefined"
+    ENT_PLURAL = "undefineds"
     
     # Returns an array of tags
     def tags
@@ -21,6 +22,10 @@ module Crunchbase
       j = API.single_entity(permalink, self::ENT_NAME)
       e = self.new(j)
       return e
+    end
+    
+    def self.find(name)
+      get(API.permalink({name: name}, self::ENT_PLURAL)["permalink"])
     end
     
     

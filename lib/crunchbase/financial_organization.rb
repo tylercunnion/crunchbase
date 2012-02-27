@@ -4,6 +4,7 @@ module Crunchbase
   class FinancialOrganization < CB_Object
     
     ENT_NAME = "financial-organization"
+    ENT_PLURAL = "financial-organizations"
     
     include Crunchbase::DateMethods
     
@@ -12,10 +13,6 @@ module Crunchbase
       :email_address, :number_of_employees, :created_at, :updated_at, 
       :overview, :image, :offices, :relationships, :investments, :milestones, 
       :providerships, :funds, :video_embeds, :external_links
-
-    def self.find(name)
-      get(API.permalink({name: name}, "financial-organizations")["permalink"])
-    end
     
     def initialize(json)
       @name = json['name']

@@ -3,14 +3,11 @@ module Crunchbase
   class ServiceProvider < CB_Object
     
     ENT_NAME = "service-provider"
+    ENT_PLURAL = "service-providers"
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, 
     :phone_number, :created_at, :updated_at, :overview, :image, :offices,
     :providerships, :external_links
-
-    def self.find(name)
-      get(API.permalink({name: name}, "service-providers")["permalink"])
-    end
     
     def initialize(json)
       @name = json["name"]
