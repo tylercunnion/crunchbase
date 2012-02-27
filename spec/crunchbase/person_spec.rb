@@ -15,16 +15,16 @@ module Crunchbase
     end 
     
     it "should ask for JSON object" do
-      API.should_receive(:person).with("brad-fitzpatrick").and_return(JSON.parse(@brad.read))
+      API.should_receive(:single_entity).with("brad-fitzpatrick", "person").and_return(JSON.parse(@brad.read))
       person = Person.get("brad-fitzpatrick")
     end
     
     it "should get information from supplied file" do
-      API.should_receive(:person).with("steve-jobs").and_return(JSON.parse(@steve.read))
+      API.should_receive(:single_entity).with("steve-jobs", "person").and_return(JSON.parse(@steve.read))
       person = Person.get("steve-jobs")
       person.first_name.should == "Steve"
       
-      API.should_receive(:person).with("brad-fitzpatrick").and_return(JSON.parse(@brad.read))
+      API.should_receive(:single_entity).with("brad-fitzpatrick", "person").and_return(JSON.parse(@brad.read))
       person = Person.get("brad-fitzpatrick")
       person.first_name.should == "Brad"
     end

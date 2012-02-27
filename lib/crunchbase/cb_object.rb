@@ -2,7 +2,10 @@ module Crunchbase
   
   # Represents any object which can be pulled directly from the CB API.
   class CB_Object
-
+    
+    # Must be overridden in subclasses
+    ENT_NAME = "undefined"
+    
     # Returns an array of tags
     def tags
       @tag_list.respond_to?('split') ? @tag_list.split(', ') : []
@@ -11,6 +14,13 @@ module Crunchbase
     # Returns an array of aliases
     def aliases
       @alias_list.respond_to?('split') ? @alias_list.split(", ") : []
+    end
+    
+    # Factory method to return an instance from a permalink  
+    def self.get(permalink)
+      j = API.single_entity(permalink, self::ENT_NAME)
+      e = self.new(j)
+      return e
     end
     
     

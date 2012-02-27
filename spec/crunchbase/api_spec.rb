@@ -10,12 +10,12 @@ module Crunchbase
     end
     
     it "should return JSON from person permalink" do
-      j = API.person("steve-jobs")
+      j = API.single_entity("steve-jobs", "person")
       j.class.should == Hash
     end
     
     it "should raise exception on unfound person" do
-      expect { API.person("not-real") }.to raise_error
+      expect { API.single_entity("not-real", "person") }.to raise_error
     end
     
     it "should follow redirects" do

@@ -27,27 +27,7 @@ module Crunchbase
       raise CrunchException unless SUPPORTED_ENTITIES.include?(entity_name)
       fetch(permalink, entity_name)
     end
-
-    def self.person(permalink)
-      single_entity(permalink, 'person')
-    end
-
-    def self.company(permalink)
-      single_entity(permalink, 'company')
-    end
-
-    def self.financial_organization(permalink)
-      single_entity(permalink, 'financial-organization')
-    end
-
-    def self.product(permalink)
-      single_entity(permalink, 'product')
-    end
-
-    def self.service_provider(permalink)
-      single_entity(permalink, 'service-provider')
-    end
-
+    
     private
     
     # Returns the JSON parser, whether that's an instance of Yajl or JSON

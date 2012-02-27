@@ -2,6 +2,8 @@ require 'date'
 module Crunchbase
   class Product < CB_Object
     
+    ENT_NAME = "product"
+    
     include Crunchbase::DateMethods
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
@@ -10,11 +12,6 @@ module Crunchbase
       :company_permalink, :company_name, :milestones, :video_embeds, 
       :external_links
       
-    def self.get(permalink)
-      j = API.product(permalink)
-      return Product.new(j)
-    end
-
     def self.find(name)
       get(API.permalink({name: name}, "products")["permalink"])
     end

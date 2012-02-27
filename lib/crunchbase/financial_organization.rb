@@ -3,6 +3,8 @@ module Crunchbase
   # Represents a Financial Organization listed in the Crunchbase.
   class FinancialOrganization < CB_Object
     
+    ENT_NAME = "financial-organization"
+    
     include Crunchbase::DateMethods
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
@@ -10,13 +12,6 @@ module Crunchbase
       :email_address, :number_of_employees, :created_at, :updated_at, 
       :overview, :image, :offices, :relationships, :investments, :milestones, 
       :providerships, :funds, :video_embeds, :external_links
-    
-    # Factory method to return a FinancialOrganization instance from a permalink
-    def self.get(permalink)
-      j = API.financial_organization(permalink)
-      f = FinancialOrganization.new(j)
-      return f
-    end
 
     def self.find(name)
       get(API.permalink({name: name}, "financial-organizations")["permalink"])

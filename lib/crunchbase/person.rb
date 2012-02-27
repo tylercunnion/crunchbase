@@ -2,6 +2,8 @@ require 'date'
 module Crunchbase
   class Person < CB_Object
     
+    ENT_NAME = "person"
+    
     include Crunchbase::DateMethods
             
     attr_reader :first_name, :last_name, :permalink, :crunchbase_url,
@@ -9,13 +11,6 @@ module Crunchbase
       :affiliation_name, :created_at, :updated_at, :overview, :created_at, 
       :updated_at, :overview, :relationships, :investments, :milestones, 
       :video_embeds, :external_links, :web_presences
-    
-    # Factory method to return a Person instance from a permalink
-    def self.get(permalink)
-      j = API.person(permalink)
-      p = Person.new(j)
-      return p
-    end
 
     def self.find(first_name, last_name)
       get(API.permalink({first_name: first_name, last_name: last_name}, "people")["permalink"])
