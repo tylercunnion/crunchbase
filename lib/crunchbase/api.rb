@@ -28,6 +28,11 @@ module Crunchbase
       fetch(permalink, entity_name)
     end
     
+    def self.all(entity)
+      uri = CB_URL + entity + ".js"
+      get_json_response(uri)
+    end
+    
     private
     
     # Returns the JSON parser, whether that's an instance of Yajl or JSON
@@ -68,7 +73,7 @@ module Crunchbase
         get_url_following_redirects(uri, @redirect_limit)
       }
       j = parser.parse(resp)
-      raise CrunchException, j["error"] if j["error"]
+      raise CrunchException, j["error"] if j.class == Hash && j["error"]
       j
     end
 

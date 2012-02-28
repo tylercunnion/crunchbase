@@ -15,6 +15,13 @@ module Crunchbase
       :competitions, :providerships, :total_money_raised, :funding_rounds, 
       :investments, :acquisition, :acquisitions, :offices, :milestones, :ipo, 
       :video_embeds, :screenshots, :external_links
+      
+    def self.all
+      all = API.all(self::ENT_PLURAL).map do |ent|
+        ent["namespace"] = ENT_NAME
+        EntityListItem.new(ent)
+      end
+    end
     
     def initialize(json)
       @name = json["name"]
