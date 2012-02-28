@@ -13,5 +13,10 @@ module Crunchbase
       sp.permalink.should == "fox-rothschild"
     end
     
+    it "should get a complete list" do
+      all_sps = ServiceProvider.all
+      all_sps[0].entity.name.should == all_sps[0].name
+    end
+    
   end
 end

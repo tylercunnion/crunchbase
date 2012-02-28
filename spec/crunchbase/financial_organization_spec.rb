@@ -20,5 +20,10 @@ module Crunchbase
       finorg.founded.should === Date.new(2004, 2, 1)
     end
     
+    it "should get a complete list" do
+      all_fins = FinancialOrganization.all
+      all_fins[0].entity.name.should == all_fins[0].name
+    end
+    
   end
 end
