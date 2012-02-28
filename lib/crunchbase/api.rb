@@ -24,7 +24,7 @@ module Crunchbase
     class << self; attr_accessor :timeout_limit, :redirect_limit end
     
     def self.single_entity(permalink, entity_name)
-      raise CrunchException unless SUPPORTED_ENTITIES.include?(entity_name)
+      raise CrunchException, "Unsupported Entity Type" unless SUPPORTED_ENTITIES.include?(entity_name)
       fetch(permalink, entity_name)
     end
     

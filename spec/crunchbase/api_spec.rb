@@ -15,7 +15,11 @@ module Crunchbase
     end
     
     it "should raise exception on unfound person" do
-      expect { API.single_entity("not-real", "person") }.to raise_error
+      expect { API.single_entity("not-real", "person") }.to raise_error, "Sorry, we could not find the record you were looking for."
+    end
+    
+    it "should raise exception for incorrect entity name" do
+      expect { API.single_entity("whatever", "wrong") }.to raise_error, "Unsupported Entity Type"
     end
     
     it "should follow redirects" do
