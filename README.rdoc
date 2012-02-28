@@ -49,7 +49,19 @@ number of results.
    all_results = s.to_ary
    result_slice = s[3..6]
 
-Coming Soon: List of Entities
+=== List all Items
+
+If you've gone insane and want a list of every single item for a given entity
+type, you can do so with the +all+ method.
+
+    all_companies = Company.all
+    company = all_companies[105]
+    
+This returns an array containing objects representing each entity. Just like 
+Search, the full item can be grabbed with the +entity+ method. Unlike Search,
+however, all of the items are pre-fetched, so iterating through the list does
+not entail a delay every ten items. Of course, the list is probably enormous,
+so it's little consolation.
 
 == Copyright
 
