@@ -3,6 +3,7 @@ module Crunchbase
   class Person < CB_Object
     
     ENT_NAME = "person"
+    ENT_PLURAL = "people"
     
     include Crunchbase::DateMethods
             

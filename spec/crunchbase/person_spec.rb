@@ -72,5 +72,11 @@ module Crunchbase
       person.should === person2
     end
     
+    it "should get a complete list" do
+      all_people = Person.all
+      all_people[0].entity.first_name.should == all_people[0].first_name
+      all_people[0].entity.last_name.should == all_people[0].last_name
+    end
+    
   end
 end
