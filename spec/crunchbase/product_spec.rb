@@ -26,5 +26,10 @@ module Crunchbase
         "updated_at" => "Sat Dec 22 08:42:28 UTC 2007", "company" => {}})
       product.deadpooled.should === Date.new(2004, 2, 1)
     end
+    
+    it "should get a complete list" do
+      all_products = Product.all
+      all_products[0].entity.name.should == all_products[0].name
+    end
   end
 end

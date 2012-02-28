@@ -28,6 +28,13 @@ module Crunchbase
       get(API.permalink({name: name}, self::ENT_PLURAL)["permalink"])
     end
     
+    def self.all
+      all = API.all(self::ENT_PLURAL).map do |ent|
+        ent["namespace"] = self::ENT_NAME
+        EntityListItem.new(ent)
+      end
+    end
+    
     
     # Compares two objects, returning true if they have the same permalink
     # (ie, represent the same entity). If you must ensure that the two objects
