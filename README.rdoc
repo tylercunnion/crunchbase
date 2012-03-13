@@ -40,6 +40,9 @@ an array.
    first_result = s[0]
    s.each { |result| puts result.name }
   
+The Search will return a list consisting of objects of the SearchResult type. To
+access the full entity object, call the +entity+ method of the SearchResult.
+
 While Search does include the Enumerable module, it does not implement all of 
 the methods of Array. If you need to treat the results as an array in a way not
 supported, you can call +to_ary+; this prefetches all result pages (if they have
@@ -47,7 +50,7 @@ not already been loaded), so it may entail a slight delay, depending on the
 number of results.
 
    all_results = s.to_ary
-   result_slice = s[3..6]
+   result_slice = all_results[3..6]
 
 === List all Items
 
@@ -59,9 +62,10 @@ type, you can do so with the +all+ method.
     
 This returns an array containing objects representing each entity. Just like 
 Search, the full item can be grabbed with the +entity+ method. Unlike Search,
-however, all of the items are pre-fetched, so iterating through the list does
-not entail a delay every ten items. Of course, the list is probably enormous,
-so it's little consolation.
+however, all of the result objects are fetched at once, so iterating through the 
+list does not entail a delay every ten items. Of course, the list is enormous
+(the list of all companies returns over 84,500 entries as of this writing), so 
+it's little consolation.
 
 == Copyright
 
