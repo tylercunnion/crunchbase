@@ -30,6 +30,19 @@ module Crunchbase
         slice.should == nil
       end
 
+      it "should slice with two arguments" do
+        start = @s.size / 3
+        slice = @s[start, 5]
+        slice.length.should == 5
+        slice[0].class.should == SearchResult
+      end
+
+      it "should slice with negative start" do
+        slice = @s[-12, 4]
+        slice.length.should == 4
+        slice[0].class.should == SearchResult
+      end
+
     end #Indexing 
 
     it "should accept negative indices" do

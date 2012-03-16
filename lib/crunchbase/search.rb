@@ -41,6 +41,11 @@ module Crunchbase
         elsif key.kind_of?(Range)
           get_range(key)
         end
+      when 2
+        start = args[0]
+        length = args[1]
+        start = @size + start if start < 0
+        get_range(start..start+length-1)
       end
     end
     
