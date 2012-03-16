@@ -59,6 +59,7 @@ module Crunchbase
     
     private
     
+    # Inserts items into the results array from the retrieved search page
     def populate_results(json)
       page = json["page"]
       results = json["results"].map{|r| SearchResult.new(r)}
@@ -66,11 +67,13 @@ module Crunchbase
       @results[start, results.length] = results
     end
     
+    # Retrieves the search page containing the given index
     def retrieve_for_index(index)
       page = (index / 10) + 1
       populate_results(API.search(@query, page))
     end
 
+    # Given one integer key, returns the indexed object from results
     def get_single_key(key)
       key = @size+key if key < 0
       r = @results[key]
@@ -82,6 +85,7 @@ module Crunchbase
       end
     end
 
+    # Given a range, returns the array slice of results indicated
     def get_range(range)
       r = []
       enum = range.to_enum
@@ -91,7 +95,7 @@ module Crunchbase
         end
       rescue StopIteration
       end
-      return r.empty? ? nil : r
+      r.empty? ? nil : r
     end
     
   end
