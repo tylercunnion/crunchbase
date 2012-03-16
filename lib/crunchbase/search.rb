@@ -32,14 +32,14 @@ module Crunchbase
       populate_results(json)
     end
     
-    def [](key)
-      if key.kind_of?(Integer)
-        r = @results[key]
-        unless r.nil? && key < @size
-          r
-        else
-          retrieve_for_index(key)
-          @results[key]
+    def [](*args)
+      case args.length
+      when 1
+        key = args[0]
+        if key.kind_of?(Integer)
+          get_single_key(key)
+        elsif key.kind_of?(Range)
+          get_range(key)
         end
       end
     end
@@ -70,5 +70,28 @@ module Crunchbase
       page = (index / 10) + 1
       populate_results(API.search(@query, page))
     end
+
+    def get_single_key(key)
+      r = @results[key]
+      unless r.nil? && key < @size
+        r
+      else
+        retrieve_for_index(key)
+        @results[key]
+      end
+    end
+
+    def get_range(range)
+      r = []
+      enum = range.to_enum
+      begin
+        while (x = enum.next) < @size
+          r << get_single_key(x)
+        end
+      rescue StopIteration
+      end
+      return r.empty? ? nil : r
+    end
+    
   end
 end
