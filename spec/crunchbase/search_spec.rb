@@ -8,6 +8,13 @@ module Crunchbase
       s = Search.find('google')
       s[0].class.should == SearchResult
     end
+
+    it "should return slices with ranges" do
+      s = Search.find('google')
+      slice = s[8..11]
+      slice.class.should == Array
+      slice[0].class.should == SearchResult
+    end
     
     it "should return higher search results" do
       s = Search.find('google')
