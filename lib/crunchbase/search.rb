@@ -72,6 +72,7 @@ module Crunchbase
     end
 
     def get_single_key(key)
+      key = @size+key if key < 0
       r = @results[key]
       unless r.nil? && key < @size
         r
