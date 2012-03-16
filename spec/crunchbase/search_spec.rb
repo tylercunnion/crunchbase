@@ -32,7 +32,7 @@ module Crunchbase
 
     end #Indexing 
 
-    it "should accpet negative indices" do
+    it "should accept negative indices" do
       s = Search.find('google')
       s[-13].should == s[s.size-13]
       s[-13].class.should == SearchResult
