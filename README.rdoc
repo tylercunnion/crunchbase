@@ -50,7 +50,6 @@ not already been loaded), so it may entail a slight delay, depending on the
 number of results.
 
    all_results = s.to_ary
-   result_slice = all_results[3..6]
 
 === List all Items
 
