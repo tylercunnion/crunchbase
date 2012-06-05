@@ -4,13 +4,13 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{crunchbase}
-  s.version = "0.2.1"
+  s.name = "crunchbase"
+  s.version = "0.2.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Tyler Cunnion}]
-  s.date = %q{2012-03-16}
-  s.email = %q{tyler.cunnion@gmail.com}
+  s.authors = ["Tyler Cunnion"]
+  s.date = "2012-06-05"
+  s.email = "tyler.cunnion@gmail.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -50,14 +50,15 @@ Gem::Specification.new do |s|
     "spec/crunchbase/search_spec.rb",
     "spec/crunchbase/service_provider_spec.rb",
     "spec/fixtures/brad-fitzpatrick.js",
+    "spec/fixtures/cargurus.js",
     "spec/fixtures/steve-jobs.js",
     "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/tylercunnion/crunchbase}
-  s.licenses = [%q{MIT}]
-  s.require_paths = [%q{lib}]
-  s.rubygems_version = %q{1.8.6}
-  s.summary = %q{Ruby wrapper for CrunchBase API}
+  s.homepage = "http://github.com/tylercunnion/crunchbase"
+  s.licenses = ["MIT"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = "1.8.23"
+  s.summary = "Ruby wrapper for CrunchBase API"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
