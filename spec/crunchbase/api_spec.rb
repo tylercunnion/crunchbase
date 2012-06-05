@@ -3,6 +3,12 @@ require 'net/http'
 
 module Crunchbase
   describe API do
+
+    it "should remove control characters" do
+      cargurus = File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "cargurus.js")).read
+      API.should_receive(:get_url_following_redirects).with("http://api.crunchbase.com/v/1/company/cargurus.js", 2).and_return(cargurus)
+      lambda { API.single_entity("cargurus", "company") }.should_not raise_error
+    end
     
     it "should return a JSON hash" do
       j = API.fetch('steve-jobs', 'person')

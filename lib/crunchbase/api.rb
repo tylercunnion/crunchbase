@@ -72,6 +72,7 @@ module Crunchbase
       resp = Timeout::timeout(@timeout_limit) {
         get_url_following_redirects(uri, @redirect_limit)
       }
+      resp = resp.gsub(/[[:cntrl:]]/, '')
       j = parser.parse(resp)
       raise CrunchException, j["error"] if j.class == Hash && j["error"]
       j
