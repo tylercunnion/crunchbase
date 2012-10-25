@@ -20,8 +20,8 @@ module Crunchbase
     SUPPORTED_ENTITIES = ['person', 'company', 'financial-organization', 'product', 'service-provider']
     @timeout_limit = 60
     @redirect_limit = 2
-    
-    class << self; attr_accessor :timeout_limit, :redirect_limit end
+    @key = ''
+    class << self; attr_accessor :timeout_limit, :redirect_limit, :key end
     
     def self.single_entity(permalink, entity_name)
       raise CrunchException, "Unsupported Entity Type" unless SUPPORTED_ENTITIES.include?(entity_name)
@@ -83,7 +83,7 @@ module Crunchbase
     def self.get_url_following_redirects(uri_str, limit = 10)
       raise CrunchException, 'HTTP redirect too deep' if limit == 0
 
-      url = URI.parse(uri_str)
+      url = URI.parse(uri_str + "?api=#{@key}")
       response = Net::HTTP.start(url.host, url.port) { |http| http.get(url.request_uri) }
       case response
         when Net::HTTPSuccess, Net::HTTPNotFound

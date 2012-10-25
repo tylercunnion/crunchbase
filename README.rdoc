@@ -9,12 +9,15 @@ use the {YAJL gem}[http://github.com/brianmario/yajl-ruby]; if not, it will
 fall back to the {JSON gem}[http://flori.github.com/json/]. Please ensure one
 of the two is installed.
 
+You will need to get an API key from {Crunchbase}[http://developer.crunchbase.com/]
+
 == Usage
 
 If you already know the permalink for a given entity, you can grab the entry
 with the +get+ method.
 
    require 'crunchbase'
+   Crunchbase::API.key = 'your crunchbase api key'
    steve = Crunchbase::Person.get("steve-jobs")
    facebook = Crunchbase::Company.get("facebook")    
    
