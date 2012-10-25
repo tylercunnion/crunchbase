@@ -69,6 +69,12 @@ list does not entail a delay every ten items. Of course, the list is enormous
 (the list of all companies returns over 84,500 entries as of this writing), so 
 it's little consolation.
 
+== Contributing
+
+Contributions are welcome. Note that in order to run the test suite, you need to
+include an API key in +spec/apikey.yml+. This file is ignored by git. An example
+file is provided for convenience.
+
 == Copyright
 
 Copyright (c) 2011-12 Tyler Cunnion. This software is made available under the 

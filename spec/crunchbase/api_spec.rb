@@ -4,9 +4,16 @@ require 'net/http'
 module Crunchbase
   describe API do
 
+    it "should raise exception for missing API key" do
+      key = API.key
+      API.key = nil
+      expect { API.fetch('steve-jobs', 'person') }.to raise_error
+      API.key = key
+    end
+
     it "should remove control characters" do
       cargurus = File.open(File.join(File.dirname(__FILE__), "..", "fixtures", "cargurus.js")).read
-      API.should_receive(:get_url_following_redirects).with("http://api.crunchbase.com/v/1/company/cargurus.js", 2).and_return(cargurus)
+      API.should_receive(:get_url_following_redirects).with(/^http:\/\/api.crunchbase.com\/v\/1\/company\/cargurus.js/, 2).and_return(cargurus)
       lambda { API.single_entity("cargurus", "company") }.should_not raise_error
     end
     

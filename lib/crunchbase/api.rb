@@ -20,7 +20,6 @@ module Crunchbase
     SUPPORTED_ENTITIES = ['person', 'company', 'financial-organization', 'product', 'service-provider']
     @timeout_limit = 60
     @redirect_limit = 2
-    @key = ''
     class << self; attr_accessor :timeout_limit, :redirect_limit, :key end
     
     def self.single_entity(permalink, entity_name)
@@ -69,6 +68,8 @@ module Crunchbase
     # if request time exceeds set limit. Raises CrunchException if returned
     # JSON contains an error.
     def self.get_json_response(uri)
+      raise CrunchException, "API key required, visit http://developer.crunchbase.com" unless @key
+      uri = uri + "#{uri.match('\?') ? "&" : "?"}api_key=#{@key}"
       resp = Timeout::timeout(@timeout_limit) {
         get_url_following_redirects(uri, @redirect_limit)
       }
@@ -83,7 +84,7 @@ module Crunchbase
     def self.get_url_following_redirects(uri_str, limit = 10)
       raise CrunchException, 'HTTP redirect too deep' if limit == 0
 
-      url = URI.parse(uri_str + "?api=#{@key}")
+      url = URI.parse(uri_str)
       response = Net::HTTP.start(url.host, url.port) { |http| http.get(url.request_uri) }
       case response
         when Net::HTTPSuccess, Net::HTTPNotFound
