@@ -9,12 +9,12 @@ module Crunchbase
     
     # Returns an array of tags
     def tags
-      @tag_list.respond_to?('split') ? @tag_list.split(', ') : []
+      @tag_list.respond_to?('split') ? @tag_list.split(/,\s*/) : []
     end
     
     # Returns an array of aliases
     def aliases
-      @alias_list.respond_to?('split') ? @alias_list.split(", ") : []
+      @alias_list.respond_to?('split') ? @alias_list.split(/,\s*/) : []
     end
     
     # Factory method to return an instance from a permalink  
