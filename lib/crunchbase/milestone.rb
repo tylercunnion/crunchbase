@@ -5,12 +5,7 @@ module Crunchbase
             :stoned_value_type, :stoned_acquirer
 
         include Crunchbase::DateMethods
-
-        # Takes a relationship list (directly from the JSON hash) and returns an
-        # array of instances of Relationship subclasses.
-        def self.array_from_milestone_list(list)
-            list.map {|l| Milestone.new(l) }
-        end
+        self.extend Crunchbase::ArrayFromList
         
         def initialize(obj)
             @description = obj['description']

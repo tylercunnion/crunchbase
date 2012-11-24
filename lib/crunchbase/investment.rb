@@ -2,14 +2,11 @@ module Crunchbase
   class Investment
     
     include Crunchbase::DateMethods
+    self.extend Crunchbase::ArrayFromList
     
     attr_reader :funding_round_code, :funding_source_url,
       :funding_source_description, :raised_amount, :raised_currency_code, 
       :company_name, :company_permalink
-    
-    def self.array_from_investment_list(list)
-      list.map{|l| self.new(l)}
-    end
     
     def initialize(hash)
       hash = hash["funding_round"]

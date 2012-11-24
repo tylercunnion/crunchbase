@@ -7,7 +7,7 @@ module Crunchbase
     
     # Takes a relationship list (directly from the JSON hash) and returns an
     # array of instances of Relationship subclasses.
-    def self.array_from_relationship_list(list)
+    def self.array_from_list(list)
       list.map do |l|
         if l["person"]
           PersonRelationship.new(l)
