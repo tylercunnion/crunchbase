@@ -11,8 +11,7 @@ module Crunchbase
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :phone_number, :description,
       :email_address, :number_of_employees, :created_at, :updated_at, 
-      :overview, :image, :offices, :relationships, :investments, :milestones, 
-      :providerships, :funds, :video_embeds, :external_links
+      :overview, :image, :offices, :funds, :video_embeds, :external_links
     
     def initialize(json)
       @name = json['name']
@@ -36,15 +35,31 @@ module Crunchbase
       @overview = json['overview']
       @image = json['image']
       @offices = json['offices']
-      @relationships = Relationship.array_from_list(json["relationships"]) if json["relationships"]
-      @investments = Investment.array_from_list(json['investments']) if json['investments']
-      @milestones = Milestone.array_from_list(json['milestones']) if json['milestones']
-      @providerships = Relationship.array_from_list(json['providerships']) if json["providerships"]
+      @relationships_list = json["relationships"]
+      @investments_list = json['investments']
+      @milestones_list = json['milestones']
+      @providerships_list = json["providerships"]
       @funds = json['funds']
       @video_embeds = json['video_embeds']
       @external_links = json['external_links']
     end
     
+    def relationships
+      @relationships ||= Relationship.array_from_list(@relationships_list)
+    end
+
+    def providerships
+      @providerships ||= Relationship.array_from_list(@providerships_list)
+    end
+
+    def investments
+      @investments ||= Investment.array_from_list(@investments_list)
+    end
+
+    def milestones
+      @milestones ||= Milestone.array_from_list(@milestones_list)
+    end
+
     # Returns the date the financial org was founded, or nil if not provided.
     def founded
       @founded ||= date_from_components(@founded_year, @founded_month, @founded_day)    

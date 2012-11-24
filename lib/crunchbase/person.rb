@@ -10,8 +10,7 @@ module Crunchbase
     attr_reader :first_name, :last_name, :permalink, :crunchbase_url,
       :homepage_url, :birthplace, :twitter_username, :blog_url, :blog_feed_url,
       :affiliation_name, :created_at, :updated_at, :overview, :created_at, 
-      :updated_at, :overview, :relationships, :investments, :milestones, 
-      :video_embeds, :external_links, :web_presences
+      :updated_at, :overview, :video_embeds, :external_links, :web_presences
 
     def self.find(first_name, last_name)
       get(API.permalink({first_name: first_name, last_name: last_name}, "people")["permalink"])
@@ -36,13 +35,24 @@ module Crunchbase
       @created_at = DateTime.parse(json["created_at"])
       @updated_at = DateTime.parse(json["updated_at"])
       @overview = json["overview"]
-      
-      @relationships = Relationship.array_from_list(json["relationships"]) if json["relationships"]
-      @investments = Investment.array_from_list(json["investments"]) if json["investments"]
-      @milestones = Milestone.array_from_list(json["milestones"]) if json["milestones"]
+      @relationships_list = json["relationships"]
+      @investments_list = json["investments"]
+      @milestones_list = json["milestones"]
       @video_embeds = json["video_embeds"]
       @external_links = json["external_links"]
       @web_presences = json["web_presences"]
+    end
+    
+    def relationships
+      @relationships ||= Relationship.array_from_list(@relationships_list)
+    end
+
+    def investments
+      @investments ||= Investment.array_from_list(@investments_list)
+    end
+
+    def milestones
+      @milestones ||= Milestone.array_from_list(@milestones_list)
     end
     
     # Returns a date object, or nil if Date cannot be created from

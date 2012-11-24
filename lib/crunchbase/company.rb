@@ -11,10 +11,9 @@ module Crunchbase
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :category_code, :number_of_employees,
       :deadpooled_url, :email_address, :phone_number, :description, 
-      :created_at, :updated_at, :overview, :image, :relationships, 
-      :competitions, :providerships, :total_money_raised, :funding_rounds, 
-      :investments, :acquisition, :acquisitions, :offices, :milestones, :ipo, 
-      :video_embeds, :screenshots, :external_links
+      :created_at, :updated_at, :overview, :image, :competitions, 
+      :total_money_raised, :funding_rounds, :acquisition, :acquisitions,
+      :offices, :ipo, :video_embeds, :screenshots, :external_links
     
     def initialize(json)
       @name = json["name"]
@@ -43,20 +42,36 @@ module Crunchbase
       @overview = json["overview"]
       @image = json["image"]
       @products_list = json["products"]
-      @relationships = Relationship.array_from_list(json["relationships"]) if json["relationships"]
+      @relationships_list = json["relationships"]
       @competitions = json["competitions"]
-      @providerships = Relationship.array_from_list(json["providerships"]) if json["providerships"]
+      @providerships_list = json["providerships"]
       @total_money_raised = json["total_money_raised"]
       @funding_rounds = json["funding_rounds"]
-      @investments = Investment.array_from_list(json['investments']) if json['investments']
+      @investments_list = json['investments']
       @acquisition = json["acquisition"]
       @acquisitions = json["acquisitions"]
       @offices = json["offices"]
-      @milestones = Milestone.array_from_list(json["milestones"]) if json["milestones"]
+      @milestones_list = json["milestones"]
       @ipo = json["ipo"]
       @video_embeds = json["video_embeds"]
       @screenshots = json["screenshots"]
       @external_links = json["external_links"]
+    end
+
+    def relationships
+      @relationships ||= Relationship.array_from_list(@relationships_list)
+    end
+
+    def providerships
+      @providerships ||= Relationship.array_from_list(@providerships_list)
+    end
+
+    def investments
+      @investments ||= Investment.array_from_list(@investments_list)
+    end
+
+    def milestones
+      @milestones ||= Milestone.array_from_list(@milestones_list)
     end
     
     # Returns the date the company was founded, or nil if not provided.

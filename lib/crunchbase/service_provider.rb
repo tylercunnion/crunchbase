@@ -7,7 +7,7 @@ module Crunchbase
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, 
     :phone_number, :created_at, :updated_at, :overview, :image, :offices,
-    :providerships, :external_links
+    :external_links
     
     def initialize(json)
       @name = json["name"]
@@ -22,10 +22,13 @@ module Crunchbase
       @overview = json["overview"]
       @image = json["image"]
       @offices = json["offices"]
-      @providerships = Relationship.array_from_list(json["providerships"]) if json["providerships"]
+      @providerships_list = json["providerships"]
       @external_links = json["external_links"]
     end
     
+    def providerships 
+      @providerships ||= Relationship.array_from_list(@providerships_list)
+    end
     
   end
 end

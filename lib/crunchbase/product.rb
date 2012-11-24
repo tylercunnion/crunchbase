@@ -10,8 +10,7 @@ module Crunchbase
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :stage_code, :deadpooled_url,
       :invite_share_url, :created_at, :updated_at, :overview, :image, 
-      :company_permalink, :company_name, :milestones, :video_embeds, 
-      :external_links
+      :company_permalink, :company_name, :video_embeds, :external_links
     
     def initialize(json)
       @name = json['name']
@@ -38,11 +37,15 @@ module Crunchbase
       @image = json['image']
       @company_permalink = json['company']['permalink']
       @company_name = json['company']['name']
-      @milestones = Milestone.array_from_list(json['milestones']) if json['milestones']
+      @milestones_list = json['milestones']
       @video_embeds = json['video_embeds']
       @external_links = json['external_links']
     end
       
+    def milestones
+      @milestones ||= Milestone.array_from_list(@milestones_list)
+    end
+    
     # Returns the date the product was deadpooled, or nil if not provided.
     def deadpooled
       @deadpooled ||= date_from_components(@deadpooled_year, @deadpooled_month, @deadpooled_day)
