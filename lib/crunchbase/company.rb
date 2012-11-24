@@ -52,7 +52,7 @@ module Crunchbase
       @acquisition = json["acquisition"]
       @acquisitions = json["acquisitions"]
       @offices = json["offices"]
-      @milestones = json["milestones"]
+      @milestones = Milestone.array_from_milestone_list(json["milestones"]) if json["milestones"]
       @ipo = json["ipo"]
       @video_embeds = json["video_embeds"]
       @screenshots = json["screenshots"]

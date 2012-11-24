@@ -38,7 +38,7 @@ module Crunchbase
       @image = json['image']
       @company_permalink = json['company']['permalink']
       @company_name = json['company']['name']
-      @milestones = json['milestones']
+      @milestones = Milestone.array_from_milestone_list(json['milestones']) if json['milestones']
       @video_embeds = json['video_embeds']
       @external_links = json['external_links']
     end
