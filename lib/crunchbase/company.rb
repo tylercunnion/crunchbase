@@ -79,6 +79,11 @@ module Crunchbase
       @founded ||= date_from_components(@founded_year, @founded_month, @founded_day)   
     end
     
+    # Returns whether the company has a deadpooled date component
+    def deadpooled?
+      @deadpooled ||= @deadpooled_year || @deadpooled_month || @deadpooled_day
+    end
+
     # Returns the date the company was deadpooled, or nil if not provided.
     def deadpooled
       @deadpooled ||= date_from_components(@deadpooled_year, @deadpooled_month, @deadpooled_day)
