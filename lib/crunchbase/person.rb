@@ -10,7 +10,7 @@ module Crunchbase
     attr_reader :first_name, :last_name, :permalink, :crunchbase_url,
       :homepage_url, :birthplace, :twitter_username, :blog_url, :blog_feed_url,
       :affiliation_name, :created_at, :updated_at, :overview, :created_at, 
-      :updated_at, :overview, :video_embeds, :external_links, :web_presences
+      :updated_at, :image, :video_embeds, :external_links, :web_presences
 
     def self.find(first_name, last_name)
       get(API.permalink({first_name: first_name, last_name: last_name}, "people")["permalink"])
@@ -35,6 +35,7 @@ module Crunchbase
       @created_at = DateTime.parse(json["created_at"])
       @updated_at = DateTime.parse(json["updated_at"])
       @overview = json["overview"]
+      @image = Image.create(json["image"])
       @relationships_list = json["relationships"]
       @investments_list = json["investments"]
       @milestones_list = json["milestones"]

@@ -40,7 +40,7 @@ module Crunchbase
       @created_at = DateTime.parse(json["created_at"])
       @updated_at = DateTime.parse(json["updated_at"])
       @overview = json["overview"]
-      @image = json["image"]
+      @image = Image.create(json["image"])
       @products_list = json["products"]
       @relationships_list = json["relationships"]
       @competitions = json["competitions"]
