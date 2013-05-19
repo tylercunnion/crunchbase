@@ -9,6 +9,8 @@ module Crunchbase
     
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :stage_code, :deadpooled_url,
+      :deadpooled_year, :deadpooled_month, :deadpooled_day,
+      :launched_year, :launched_month, :launched_day,
       :invite_share_url, :created_at, :updated_at, :overview, :image, 
       :company_permalink, :company_name, :video_embeds, :external_links
     
@@ -45,11 +47,19 @@ module Crunchbase
     def milestones
       @milestones ||= Milestone.array_from_list(@milestones_list)
     end
+
+    def deadpooled?
+      !!(@deadpooled_year || @deadpooled_month || @deadpooled_day)
+    end
     
     # Returns the date the product was deadpooled, or nil if not provided.
     def deadpooled
       @deadpooled ||= date_from_components(@deadpooled_year, @deadpooled_month, @deadpooled_day)
     end    
+
+    def launched?
+      !!(@launched_year || @launched_month || @launched_day)
+    end
     
     # Returns the date the product was launched, or nil if not provided.
     def launched

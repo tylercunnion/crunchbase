@@ -6,6 +6,7 @@ module Crunchbase
     
     attr_reader :funding_round_code, :funding_source_url,
       :funding_source_description, :raised_amount, :raised_currency_code, 
+      :funded_year, :funded_month, :funded_day,
       :company_name, :company_permalink
     
     def initialize(hash)
@@ -28,6 +29,10 @@ module Crunchbase
       return @company unless @company.nil? || force_reload
       @company = Company.get(@company_permalink)
       return @company
+    end
+
+    def funded_date?
+      !!(@funded_year || @funded_month || @funded_day)
     end
     
     def funded_date

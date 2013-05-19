@@ -11,7 +11,8 @@ module Crunchbase
     attr_reader :name, :permalink, :crunchbase_url, :homepage_url, :blog_url,
       :blog_feed_url, :twitter_username, :phone_number, :description,
       :email_address, :number_of_employees, :created_at, :updated_at, 
-      :overview, :image, :offices, :funds, :video_embeds, :external_links
+      :overview, :image, :offices, :funds, :video_embeds, :external_links,
+      :founded_year, :founded_month, :founded_day
     
     def initialize(json)
       @name = json['name']
@@ -58,6 +59,10 @@ module Crunchbase
 
     def milestones
       @milestones ||= Milestone.array_from_list(@milestones_list)
+    end
+
+    def founded?
+      !!(@founded_year || @founded_month || @founded_day)
     end
 
     # Returns the date the financial org was founded, or nil if not provided.

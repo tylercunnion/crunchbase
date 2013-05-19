@@ -13,7 +13,9 @@ module Crunchbase
       :deadpooled_url, :email_address, :phone_number, :description, 
       :created_at, :updated_at, :overview, :image, :competitions, 
       :total_money_raised, :funding_rounds, :acquisition, :acquisitions,
-      :offices, :ipo, :video_embeds, :screenshots, :external_links
+      :offices, :ipo, :video_embeds, :screenshots, :external_links,
+      :deadpooled_year, :deadpooled_month, :deadpooled_day,
+      :founded_year, :founded_month, :founded_day
     
     def initialize(json)
       @name = json["name"]
@@ -73,6 +75,10 @@ module Crunchbase
     def milestones
       @milestones ||= Milestone.array_from_list(@milestones_list)
     end
+
+    def founded?
+      !!(@founded_year || @founded_month || @founded_day)
+    end
     
     # Returns the date the company was founded, or nil if not provided.
     def founded
@@ -81,7 +87,7 @@ module Crunchbase
     
     # Returns whether the company has a deadpooled date component
     def deadpooled?
-      @deadpooled ||= @deadpooled_year || @deadpooled_month || @deadpooled_day
+      !!(@deadpooled_year || @deadpooled_month || @deadpooled_day)
     end
 
     # Returns the date the company was deadpooled, or nil if not provided.

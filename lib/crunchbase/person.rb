@@ -10,7 +10,8 @@ module Crunchbase
     attr_reader :first_name, :last_name, :permalink, :crunchbase_url,
       :homepage_url, :birthplace, :twitter_username, :blog_url, :blog_feed_url,
       :affiliation_name, :created_at, :updated_at, :overview, :created_at, 
-      :updated_at, :image, :video_embeds, :external_links, :web_presences
+      :updated_at, :image, :video_embeds, :external_links, :web_presences,
+      :born_year, :born_month, :born_day
 
     def self.find(first_name, last_name)
       get(API.permalink({first_name: first_name, last_name: last_name}, "people")["permalink"])
@@ -54,6 +55,10 @@ module Crunchbase
 
     def milestones
       @milestones ||= Milestone.array_from_list(@milestones_list)
+    end
+
+    def born?
+      !!(@born_year || @born_month || @born_day)
     end
     
     # Returns a date object, or nil if Date cannot be created from

@@ -34,6 +34,12 @@ module Crunchbase
       company.deadpooled?.should be_true
     end
 
+    it "should return whether the company was not deadpooled" do
+      company = Company.new({"created_at" => "Sat Dec 22 08:42:28 UTC 2007",
+                             "updated_at" => "Sat Dec 22 08:42:28 UTC 2007"})
+      company.deadpooled?.should be_false
+    end
+
     it "should get a complete list" do
       all_companies = Company.all
       all_companies[0].entity.name.should == all_companies[0].name
