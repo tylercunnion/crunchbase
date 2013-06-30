@@ -36,7 +36,12 @@ the actual data.
 Searching the Crunchbase is possible with the Search class.
 
    s = Crunchbase::Search.find("widgets")
-   
+
+You can also search by location using the Location class. Searches can be by city,
+state, zip, country-code, etc.
+
+   l = Crunchbase::Location.geo("San Francisco")
+
 You can access the search results by treating the returned Search instance as
 an array.
 
