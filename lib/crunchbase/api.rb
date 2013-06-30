@@ -56,6 +56,13 @@ module Crunchbase
       get_json_response(uri)
     end
 
+    # Fetches URI for geographic search interface
+    def self.geo(query, page=1)
+      require "cgi"
+      uri = CB_URL + "search.js?geo=#{CGI.escape(query)}&page=#{page}"
+      get_json_response(uri)
+    end
+
     # Searches for a permalink in a particular category.
     def self.permalink(parameters, category)
       require "cgi"
