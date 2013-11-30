@@ -62,4 +62,12 @@ module Crunchbase
     end
 
   end
+
+  describe Location do
+
+    it "should retrieve geo search results" do
+        s = Location.geo('san francisco')
+        s[0].class.should == SearchResult
+    end
+  end
 end

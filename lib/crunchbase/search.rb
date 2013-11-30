@@ -104,4 +104,21 @@ module Crunchbase
     end
     
   end
+  
+  class Location < Search
+    
+    # Performs a Crunchbase geo-location search for query.
+    def self.geo(query)
+      j = API.geo(query)
+      s = Location.new(query, j)
+    end
+     
+     # Retrieves the search page containing the given index
+    def retrieve_for_index(index)
+      page = (index / 10) + 1
+      populate_results(API.geo(@query, page))
+    end
+    
+  end 
+
 end
