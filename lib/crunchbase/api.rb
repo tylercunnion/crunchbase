@@ -18,9 +18,10 @@ module Crunchbase
   class API
     CB_URL = 'http://api.crunchbase.com/v/1/'
     SUPPORTED_ENTITIES = ['person', 'company', 'financial-organization', 'product', 'service-provider']
-    @timeout_limit = 60
+    @timeout_limit = 120
     @redirect_limit = 2
-    class << self; attr_accessor :timeout_limit, :redirect_limit, :key end
+    @search_params = {}
+    class << self; attr_accessor :timeout_limit, :redirect_limit, :search_params, :key end
     
     def self.single_entity(permalink, entity_name)
       raise CrunchException, "Unsupported Entity Type" unless SUPPORTED_ENTITIES.include?(entity_name)
@@ -30,6 +31,19 @@ module Crunchbase
     def self.all(entity)
       uri = CB_URL + entity + ".js"
       get_json_response(uri)
+    end
+
+    # Construct multi-parameter query
+    def self.add_param(kind, value)
+      search_params[kind] = value.to_s
+    end
+
+    def self.clear_params
+      search_params = {}
+    end
+
+    def self.go!(page=1)
+      self.c_request(page)
     end
     
     private
@@ -77,6 +91,25 @@ module Crunchbase
     def self.get_json_response(uri)
       raise CrunchException, "API key required, visit http://developer.crunchbase.com" unless @key
       uri = uri + "#{uri.match('\?') ? "&" : "?"}api_key=#{@key}"
+      resp = Timeout::timeout(@timeout_limit) {
+        get_url_following_redirects(uri, @redirect_limit)
+      }
+      resp = resp.gsub(/[[:cntrl:]]/, '')
+      j = parser.parse(resp)
+      raise CrunchException, j["error"] if j.class == Hash && j["error"]
+      j
+    end
+
+    def self.c_request(page=1)
+      raise CrunchException, "API key required, visit http://developer.crunchbase.com" unless @key
+      require "cgi"
+      uri = CB_URL + "search.js?"
+      @search_params.each do |p, v|
+        uri = uri + "#{uri[-1] == "?" ? "" : "&"}#{p.to_s}=#{CGI.escape(v.to_s)}"
+      end
+      uri = uri + "#{uri.match('\?') ? "&" : "?"}api_key=#{@key}"
+      
+      puts uri
       resp = Timeout::timeout(@timeout_limit) {
         get_url_following_redirects(uri, @redirect_limit)
       }
