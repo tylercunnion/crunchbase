@@ -74,6 +74,16 @@ list does not entail a delay every ten items. Of course, the list is enormous
 (the list of all companies returns over 84,500 entries as of this writing), so 
 it's little consolation.
 
+== Complex Queries
+
+If you want to make a query that searches across multiple parameters you can add
+parameters with the `#add_param` method. Once all desured parameters are set,
+use `#go!` to trigger it and get the parsed response.
+    Crunchbase::API.add_param("geo", "Boston")
+    Crunchbase::API.add_param("range", 50)
+    boston_startups = Crunchbase::API.go!
+    Crunchbase::API.clear_params
+
 == Contributing
 
 Contributions are welcome. Note that in order to run the test suite, you need to

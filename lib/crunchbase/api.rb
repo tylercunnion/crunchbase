@@ -35,9 +35,7 @@ module Crunchbase
 
     # Construct multi-parameter query
     def self.add_param(kind, value)
-      unless !self.respond_to?(kind)
-        search_params[kind] = value.to_s
-      end
+      search_params[kind] = value.to_s
     end
 
     def self.clear_params
